@@ -1,0 +1,113 @@
+---
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import Icon from '../components/ui/Icon.astro';
+import Section from '../components/ui/Section.astro';
+import FlexRow from '../components/ui/FlexRow.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'Семён и Александр';
+const pageDescription =
+  'Персональная страница ученика Семёна с материалами для занятий финским языком';
+const canonicalUrl = 'https://grigori.konopelko.com/students/sever/';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} canonicalUrl={canonicalUrl}>
+  <Section>
+    <div class="student-header">
+      <h1>Семён и Александр</h1>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Расписание занятий</h2>
+    <FlexRow>
+      <Card>
+        <h3>Cемен  </h3>
+        Понедельник, 19:00-20:00 МСК <br />
+        Вторник, 15:00-16:00 МСК
+      </Card>
+       <Card>
+        <h3>Александр  </h3>
+        Вторник, 18:00-20:00 МСК
+      </Card>
+
+    </FlexRow>
+  </Section>
+<Section>
+    <h2>Материалы</h2>
+  <FlexRow>
+
+    <Card>
+      <h3>Учебные материалы</h3>
+      <Button
+        href="https://drive.google.com/drive/folders/1H-P45PbX1DpbqYEh6S4UyC0Bz4J4sga9?usp=drive_link"
+        target="_blank"
+        variant="primary"
+      >
+        <Icon name="bookOpen" /> Открыть материалы
+      </Button>
+    </Card>
+    <Card>
+      <h3>Конспект Семен</h3>
+      <Button
+        href="https://docs.google.com/document/d/1qd8bLmCBvLtCDI_yALhF2_fMzn0_8VHFxeq29lKMtpI/edit?usp=drive_link"
+        target="_blank"
+        variant="primary"
+      >
+        <Icon name="bookOpen" />
+        Открыть конспект
+      </Button>
+    </Card>
+     <Card>
+      <h3>Конспект Александр</h3>
+      <Button
+        href="https://docs.google.com/document/d/1GMr1H6Nw7m2bacFglhdnS66WBbssZi7b8nm0_wHDs4I/edit?usp=sharing"
+        target="_blank"
+        variant="primary"
+      >
+        <Icon name="bookOpen" />
+        Открыть конспект
+      </Button>
+    </Card>
+  </FlexRow>
+</Section>
+  <Section>
+    <h2>Полезные ресурсы</h2>
+    <FlexRow>
+      <Card>
+        <h3>Формы склонения слов</h3>
+        <Button
+          href="https://fi.wiktionary.org/wiki/Wikisanakirja:Etusivu"
+          target="_blank"
+          variant="button-link"
+        >
+          Wikisanakirja
+        </Button>
+      </Card>
+
+      <Card>
+        <h3>Поиск форм глаголов</h3>
+        <Button href="https://www.verbix.com/find-verb/" target="_blank" variant="button-link">
+          Verbix
+        </Button>
+      </Card>
+    </FlexRow>
+  </Section>
+
+  <Section>
+    <h2>Оплата</h2>
+    <FlexRow>
+      <Card>
+        <Button
+          href="https://docs.google.com/spreadsheets/d/1gPkRkdxTkyor3rjnBpX-xLfaOcaJZs7WoT0aUvLX-L8/edit?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="button-link"
+        >
+          <Icon name="file-text" /> Состояние оплаты
+        </Button>
+      </Card>
+    </FlexRow>
+  </Section>
+</BaseLayout>
