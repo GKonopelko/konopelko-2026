@@ -1,12 +1,19 @@
 ---
-import { navigationLinks } from '../../data/navigation';
+import { tutorLinks, translationLinks } from '../../data/navigation';
 import Button from './Button.astro';
+
+// Проверяем текущий адрес страницы
+const pathname = Astro.url.pathname;
+const isTranslation =
+  pathname.startsWith('/translation') || pathname.startsWith('/fi') || pathname.startsWith('/en');
+
+const currentLinks = isTranslation ? translationLinks : tutorLinks;
 ---
 
 <nav class="nav-desktop" aria-label="Основная навигация">
   <div class="nav-links">
     {
-      navigationLinks.map((link) => (
+      currentLinks.map((link) => (
         <Button href={link.href} variant="nav-link" size="medium">
           {link.label}
         </Button>
@@ -15,22 +22,21 @@ import Button from './Button.astro';
   </div>
 
   <style>
+    /* Mobile First: на узких экранах десктопное меню скрыто */
     .nav-desktop {
-      display: flex;
+      display: none;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-
-    @media (max-width: 1024px) {
+    /* На широких экранах (≥ 64rem / 1024px) показываем горизонтальный ряд */
+    @media (min-width: 64rem) {
       .nav-desktop {
-        display: none;
+        display: flex;
       }
+
       .nav-links {
-        gap: 0rem;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
       }
     }
   </style>

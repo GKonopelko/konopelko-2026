@@ -12,21 +12,40 @@ export interface Props {
   canonicalUrl?: string;
   structuredData?: object;
   faqData?: Array<{ question: string; answer: string }>;
+  lang?: 'ru' | 'fi' | 'en';
 }
 
-const { title, description, canonicalUrl, structuredData, faqData = [] } = Astro.props;
-const siteUrl = 'https://grigori.konopelko.com';
+const {
+  title,
+  description,
+  canonicalUrl,
+  structuredData,
+  faqData = [],
+  lang = 'ru',
+} = Astro.props;
+
+// Определяем, относится ли страница к переводам
+const isTranslation =
+  Astro.url.pathname.startsWith('/translation') ||
+  Astro.url.pathname.startsWith('/fi') ||
+  Astro.url.pathname.startsWith('/en');
+
+const siteUrl = 'https://konopelko.com';
 const fullCanonicalUrl = canonicalUrl || siteUrl + Astro.url.pathname;
 const fullOgImage = siteUrl + '/images/grigori.webp';
+
+const siteName = isTranslation
+  ? 'Переводчик финского языка — Григорий Конопелько'
+  : 'Репетитор финского языка — Григорий Конопелько';
 
 const jsonLdString = JSON.stringify(
   structuredData || {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Репетитор финского языка - Григорий Конопелько',
+    name: siteName,
     description: description,
-    url: siteUrl,
-    telephone: '+7-911-777-02-97',
+    url: fullCanonicalUrl,
+    telephone: 'emergency services',
     email: 'grigori.konopelko@mail.ru',
     address: {
       '@type': 'PostalAddress',
@@ -34,15 +53,16 @@ const jsonLdString = JSON.stringify(
       addressLocality: 'Санкт-Петербург',
     },
     areaServed: ['Россия', 'Финляндия'],
-    serviceType: 'Языковые курсы',
+    serviceType: isTranslation ? 'Услуги устного и письменного переводчика' : 'Языковые курсы',
     provider: {
       '@type': 'Person',
       name: 'Григорий Конопелько',
-      jobTitle: 'Репетитор финского языка',
+      jobTitle: isTranslation ? 'Переводчик финского языка' : 'Репетитор финского языка',
       experienceYears: '15',
     },
   }
 );
+
 
 const faqStructuredData =
   faqData.length > 0
@@ -62,7 +82,7 @@ const faqStructuredData =
 ---
 
 <!doctype html>
-<html lang="ru">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -77,7 +97,7 @@ const faqStructuredData =
     <meta property="og:url" content={fullCanonicalUrl} />
     <meta property="og:image" content={fullOgImage} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Репетитор финского языка - Григорий Конопелько" />
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="ru_RU" />
 
     <!-- Twitter Card -->

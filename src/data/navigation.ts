@@ -1,7 +1,27 @@
-export const navigationLinks = [
-  { href: '/metodika/', label: 'Методика' },
+export interface NavLink {
+  href: string;
+  label: string;
+  isHome?: boolean;
+}
+
+export const tutorLinks: NavLink[] = [
+  { href: '/', label: 'Главная', isHome: true },
   { href: '/about/', label: 'Обо мне' },
   { href: '/articles/', label: 'Материалы' },
   { href: '/faq/', label: 'Ответы' },
   { href: '/contact/', label: 'Контакты' },
 ];
+
+export const translationLinks: NavLink[] = [
+  { href: '/translation/', label: 'Обзор', isHome: true },
+  { href: '/translation/interpreting/', label: 'Устный' },
+  { href: '/translation/written/', label: 'Письменный' },
+  { href: '/translation/certification/', label: 'Заверение' },
+  { href: '/translation/price/', label: 'Цены' },
+  { href: '/translation/notes/', label: 'Заметки' },
+  { href: '/translation/faq/', label: 'Вопросы' },
+  { href: '/translation/contact/', label: 'Контакты' },
+];
+
+// Временно оставляем для совместимости со старыми файлами до Шага 2 и 3
+export const navigationLinks = tutorLinks;

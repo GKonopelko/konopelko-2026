@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/ui/Section.astro';
+import FlexRow from '../../components/ui/FlexRow.astro';
+import Card from '../../components/ui/Card.astro';
+import Icon from '../../components/ui/Icon.astro';
+import Button from '../../components/ui/Button.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+
+const pageTitle = 'Услуги переводчика финского языка | Конопелько Григорий Викторович';
+const pageDescription =
+  'Профессиональный устный и письменный перевод с финского и на финский язык. Нотариальное заверение, апостиль, сопровождение переговоров. Опыт более 15 лет.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Section>
+    <h1>Услуги переводчика финского языка</h1>
+    <p class="text-center">
+      Профессиональный устный и письменный перевод для частных лиц и компаний. Работаю в языковых
+      парах <strong>русский ↔ финский</strong> и <strong>английский ↔ финский</strong>.
+    </p>
+    <p class="text-center">
+      Филологическое образование СПбГУ, стажировка в Хельсинкском университете и более 15 лет
+      практического опыта работы с официальными документами и сопровождением сделок.
+    </p>
+
+    <FlexRow>
+      <Button href="/translation/price/" variant="primary" size="large">
+        Посмотреть цены
+      </Button>
+      <Button href="/translation/contact/" variant="button-link" size="large">
+        Заказать перевод →
+      </Button>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Основные направления работы</h2>
+    <FlexRow>
+      <Card>
+        <Icon name="bookOpen" />
+        <h3>Письменный перевод</h3>
+        <p>
+          Личные документы (свидетельства, дипломы, справки), договоры, юридическая и деловая
+          документация с сохранением официальной точности.
+        </p>
+        <Button href="/translation/written/" variant="text-link">Подробнее →</Button>
+      </Card>
+
+      <Card>
+        <Icon name="users" />
+        <h3>Устный перевод</h3>
+        <p>
+          Последовательный перевод на деловых переговорах, встречах, нотариальных сделках, в
+          государственных учреждениях и онлайн.
+        </p>
+        <Button href="/translation/interpreting/" variant="text-link">Подробнее →</Button>
+      </Card>
+
+      <Card>
+        <Icon name="award" />
+        <h3>Заверение и апостиль</h3>
+        <p>
+          Подготовка переводов для нотариального заверения в России и официального использования в
+          Финляндии, консультации по проставлению апостиля.
+        </p>
+        <Button href="/translation/certification/" variant="text-link">Подробнее →</Button>
+      </Card>
+    </FlexRow>
+  </Section>
+
+  <Section>
+    <h2>Почему клиенты доверяют мне документы</h2>
+    <FlexRow>
+      <Card>
+        <Icon name="award" />
+        <h3>Профильное образование</h3>
+        <p>
+          Филологический факультет СПбГУ и стажировка в Хельсинкском университете — глубокое знание
+          реалий обеих стран.
+        </p>
+      </Card>
+
+      <Card>
+        <Icon name="target" />
+        <h3>Опыт более 15 лет</h3>
+        <p>
+          Тысячи переведенных документов и десятки часов устного сопровождения сделок и переговоров.
+        </p>
+      </Card>
+
+      <Card>
+        <Icon name="zap" />
+        <h3>Соблюдение сроков</h3>
+        <p>
+          Оперативная оценка стоимости по фото или скану документа и строгая конфиденциальность.
+        </p>
+      </Card>
+    </FlexRow>
+  </Section>
+
+  <CTASection
+    badgeText="Быстрая оценка стоимости"
+    title="Нужно перевести или заверить документ?"
+    subtitle="Пришлите скан или фото документа в мессенджер или на почту — я рассчитаю точную стоимость и сроки."
+    buttonText="Связаться и отправить документ"
+    buttonHref="/translation/contact/"
+  />
+</BaseLayout>
