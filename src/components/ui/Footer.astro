@@ -4,182 +4,151 @@ import Icon from './Icon.astro';
 ---
 
 <footer class="footer">
-  <div class="footer-content">
-    <div class="footer-row">
-      <div class="footer-contacts">
-        <Button href="tel:+79117770297" variant="button-link" size="medium" class="contact-button">
-          <Icon name="phone" size="sm" />
-          <span class="contact-text">Позвонить</span>
-        </Button>
-
-        <Button
-          href="mailto:grigori.konopelko@mail.ru"
-          variant="button-link"
-          size="medium"
-          class="contact-button"
-        >
-          <Icon name="email" size="sm" />
-          <span class="contact-text">Написать</span>
-        </Button>
-
-        <Button
-          href="https://wa.me/79117770297"
-          variant="button-link"
-          size="medium"
-          class="contact-button"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon name="whatsapp" size="sm" />
-          <span class="contact-text">WhatsApp</span>
-        </Button>
-
-        <Button
-          href="https://t.me/GrigoriKonopelko"
-          variant="button-link"
-          size="medium"
-          class="contact-button"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon name="telegram" size="sm" />
-          <span class="contact-text">Telegram</span>
-        </Button>
-
-        <Button
-          href="https://max.ru/u/f9LHodD0cOIlZL05Afu8TsfFS8mVlkt1nFSApyy1oWrkJg3Yx8xqxlGuTgM"
-          variant="button-link"
-          size="medium"
-          class="contact-button"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon name="max" size="sm" />
-          <span class="contact-text">Max</span>
-        </Button>
-      </div>
-
-      <div class="footer-copyright">
-        <p>© Конопелько Григорий Викторович, {new Date().getFullYear()}</p>
-      </div>
+  <div class="footer-columns">
+    <div class="footer-col">
+      <h3 class="footer-title text-left">Обучение финскому языку</h3>
+      <ul class="footer-list">
+        <li><a href="/">Индивидуальные уроки</a></li>
+        <li><a href="/metodika/">Методика преподавания</a></li>
+        <li><a href="/about/">Обо мне и квалификация</a></li>
+        <li><a href="/articles/">Полезные материалы</a></li>
+        <li><a href="/faq/">Вопросы об обучении</a></li>
+        <li><a href="/contact/">Запись на занятия</a></li>
+      </ul>
     </div>
+
+    <div class="footer-col">
+      <h3 class="footer-title text-left">Услуги переводчика</h3>
+      <ul class="footer-list">
+        <li><a href="/translation/">Обзор услуг перевода</a></li>
+        <li><a href="/translation/interpreting/">Устный перевод</a></li>
+        <li><a href="/translation/written/">Письменный перевод</a></li>
+        <li><a href="/translation/certification/">Заверение перевода и апостиль</a></li>
+        <li><a href="/translation/price/">Стоимость перевода</a></li>
+        <li><a href="/translation/notes/">Заметки о финском языке</a></li>
+        <li><a href="/translation/faq/">Вопросы о переводе</a></li>
+        <li><a href="/translation/contact/">Заказать перевод</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-contacts">
+      <Button href="tel:+79117770297" variant="button-link" size="small">
+        <Icon name="phone" size="sm" />
+        <span class="contact-text">Позвонить</span>
+      </Button>
+
+      <Button href="mailto:grigori.konopelko@mail.ru" variant="button-link" size="small">
+        <Icon name="email" size="sm" />
+        <span class="contact-text">Написать</span>
+      </Button>
+
+      <Button
+        href="https://wa.me"
+        variant="button-link"
+        size="small"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="whatsapp" size="sm" />
+        <span class="contact-text">WhatsApp</span>
+      </Button>
+
+      <Button
+        href="https://t.me"
+        variant="button-link"
+        size="small"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="telegram" size="sm" />
+        <span class="contact-text">Telegram</span>
+      </Button>
+
+      <Button
+        href="https://max.ru"
+        variant="button-link"
+        size="small"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="max" size="sm" />
+        <span class="contact-text">Max</span>
+      </Button>
+    </div>
+
+    <p class="footer-copyright text-center">© Конопелько Григорий Викторович, {new Date().getFullYear()}</p>
   </div>
 </footer>
 
 <style>
   .footer {
     border-top: 0.0625rem solid var(--border-light);
-    padding: 0.75rem 0;
+    padding: 2rem 0 1.5rem;
     margin-top: 3rem;
   }
 
-  .footer-content {
-    margin: 0 auto;
-    padding: 0 2rem;
+  .footer-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 3rem;
+    margin-bottom: 2rem;
   }
 
-  .footer-row {
+  .footer-col {
+    flex: 1 1 15rem;
+  }
+
+  .footer-title {
+    font-size: var(--text-base);
+    margin: 0 0 0.75rem;
+  }
+
+  .footer-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-list a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    transition: var(--transition);
+  }
+
+  .footer-list a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-bottom {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1.25rem;
+    padding-top: 1.5rem;
+    border-top: 0.0625rem solid var(--border-light);
   }
 
   .footer-contacts {
     display: flex;
-    gap: 0.1rem;
-    flex-wrap: nowrap;
-  }
-
-  .contact-button {
-    display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 0.25rem;
-  }
-
-  .contact-icon {
-    font-size: var(--text-base);
-    flex-shrink: 0;
+    gap: 0.5rem;
   }
 
   .contact-text {
-    white-space: nowrap;
+    display: none;
   }
 
   .footer-copyright {
     font-size: var(--text-sm);
-    flex-shrink: 0;
-  }
-
-  .footer-copyright p {
     margin: 0;
   }
 
-  @media (max-width: 64rem) {
-    .footer-row {
-      flex-direction: column;
-      gap: 0.75rem;
-      text-align: center;
-    }
-
-    .footer-contacts {
-      justify-content: center;
-      gap: 0.2rem;
-    }
-  }
-
-  @media (max-width: 48rem) {
-    .footer {
-      padding: 0.5rem 0;
-      margin-top: 2rem;
-    }
-
-    .footer-content {
-      padding: 0 1rem;
-    }
-
-    .footer-contacts {
-      gap: 0.1rem;
-    }
-
+  @media (min-width: 48rem) {
     .contact-text {
-      display: none;
-    }
-
-    .contact-button {
-      width: 2rem !important;
-      height: 2rem !important;
-      padding: 0.5rem !important;
-    }
-  }
-
-  @media (max-width: 30rem) {
-    .footer-content {
-      padding: 0 0.5rem;
-    }
-
-    .footer-contacts {
-      gap: 0.2rem;
-    }
-
-    .contact-icon {
-      font-size: var(--text-sm);
-    }
-  }
-
-  @media (max-width: 23.4375rem) {
-    .footer-content {
-      padding: 0 0.25rem;
-    }
-
-    .footer-contacts {
-      gap: 0.25rem;
-    }
-
-    .contact-button {
-      width: 1.8rem !important;
-      height: 1.8rem !important;
+      display: inline;
     }
   }
 </style>

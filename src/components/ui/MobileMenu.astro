@@ -15,9 +15,7 @@ const isTranslation =
 
 const currentLinks = isTranslation ? translationLinks : tutorLinks;
 const switchHref = isTranslation ? '/' : '/translation/';
-const switchLabel = isTranslation
-  ? '← Изучаете финский? К урокам'
-  : 'Нужен переводчик? В раздел →';
+const switchLabel = isTranslation ? '← Преподавание финского' : 'Услуги переводчика →';
 ---
 
 <nav class="nav-mobile" id={menuId} aria-label="Мобильная навигация" aria-hidden="true">
@@ -31,7 +29,7 @@ const switchLabel = isTranslation
       ))
     }
 
-    <Button href={switchHref} variant="primary" size="medium" class="nav-item--cta">
+    <Button href={switchHref} variant="soft" size="medium" class="nav-item--cta">
       {switchLabel}
     </Button>
   </div>
@@ -89,7 +87,6 @@ const switchLabel = isTranslation
   .mobile-links :global(.nav-item--cta) {
     margin-top: auto;
     width: 100%;
-    background: var(--hover-bg);
   }
 
   @media (max-width: 30rem) {

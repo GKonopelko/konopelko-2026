@@ -1,7 +1,7 @@
 ---
 export interface Props {
   href?: string;
-  variant?: 'primary' | 'button-link' | 'text-link' | 'nav-link';
+  variant?: 'primary' | 'soft' | 'button-link' | 'text-link' | 'nav-link';
   size?: 'small' | 'medium' | 'large';
   class?: string;
   target?: string;
@@ -66,6 +66,21 @@ const sizeClass = size !== 'medium' ? `btn--${size}` : '';
   }
 
   .btn-primary:hover {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--hover-bg);
+  }
+
+  /* SOFT BUTTON (для переключателя разделов в шапке) */
+  .btn-soft {
+    background: var(--accent-soft);
+    color: var(--link-color);
+    border-color: var(--accent-light);
+    padding: 0.75rem 1rem;
+  }
+
+  .btn-soft:hover {
     background: var(--hover-bg);
     color: var(--text-primary);
     box-shadow: var(--shadow-hover);

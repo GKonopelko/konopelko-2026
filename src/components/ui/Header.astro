@@ -22,8 +22,8 @@ const desktopSwitchText = isTranslation
   ? '← Преподавание финского языка'
   : 'Услуги переводчика финского языка →';
 const mobileSwitchText = isTranslation
-  ? '← Изучаете финский? К урокам'
-  : 'Нужен переводчик? В раздел →';
+  ? '← Преподавание финского языка'
+  : 'Услуги переводчика финского языка →';
 ---
 
 <header class="header">
@@ -32,7 +32,7 @@ const mobileSwitchText = isTranslation
       <LogoLink showText={true} />
 
       <div class="header-actions">
-        <Button href={switchHref} variant="primary" size="small" class="desktop-switch switch-btn">
+        <Button href={switchHref} variant="soft" size="small" class="desktop-switch">
           {desktopSwitchText}
         </Button>
         <BurgerButton {buttonId} {menuId} />
@@ -44,7 +44,7 @@ const mobileSwitchText = isTranslation
     </div>
 
     <div class="mobile-switch-bar">
-      <Button href={switchHref} variant="primary" size="small" class="mobile-switch switch-btn">
+      <Button href={switchHref} variant="soft" size="small" class="mobile-switch">
         {mobileSwitchText}
       </Button>
     </div>
@@ -110,11 +110,6 @@ const mobileSwitchText = isTranslation
 
   .mobile-switch-bar :global(.mobile-switch) {
     width: 100%;
-  }
-
-  /* Выделение кнопки-переключателя родной переменной */
-  .header :global(.switch-btn) {
-    background: var(--hover-bg);
   }
 
   /* === DESKTOP (≥ 64rem / 1024px) === */

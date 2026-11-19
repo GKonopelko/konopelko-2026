@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/ui/Section.astro';
+import FlexRow from '../../components/ui/FlexRow.astro';
+import Card from '../../components/ui/Card.astro';
+import Icon from '../../components/ui/Icon.astro';
+import Button from '../../components/ui/Button.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+import { TRANSLATION_PRICES } from '../../data/prices';
+
+const pageTitle = 'Устный перевод на финский и английский языки | Григорий Конопелько';
+const pageDescription =
+  'Качественные устные переводы на финский и английский языки по разумной цене. Синхронный, последовательный, онлайн-перевод и перевод у нотариуса в Санкт-Петербурге.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Section>
+    <h1>Устный перевод на финский и английский и с финского и английского языков</h1>
+    <p class="text-center">финский – русский – финский • английский – русский – английский</p>
+    <p class="text-center">
+      <strong
+        >Работаю лично и со своей командой лучших устных переводчиков финского и английского языка.</strong
+      >
+    </p>
+
+    <FlexRow>
+      <Button href="/translation/contact/" variant="primary" size="large">
+        Заказать перевод →
+      </Button>
+      <Button href="/translation/price/" variant="button-link" size="large">
+        Стоимость устного перевода
+      </Button>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Эффективная коммуникация без барьеров</h2>
+    <p>
+      Экономьте время и нервы, концентрируйтесь на решении главных задач, а переводчик будет
+      отвечать за эффективную коммуникацию и создавать естественную и доброжелательную атмосферу для
+      всех участников беседы.
+    </p>
+    <p>
+      Задача профессионального переводчика — <a href="/translation/faq/#helpInterpreter">помочь</a>
+      собеседникам понять друг друга и полностью, до мелочей и нюансов, донести сообщение до слушателей.
+      Заказывайте услуги финских и английских синхронных и последовательных переводчиков <a
+        href="/about/">напрямую без посредников</a
+      >.
+    </p>
+
+    <h3>Ситуации, в которых я помогаю</h3>
+    <ul>
+      <li>
+        Официальный перевод у нотариуса в Санкт-Петербурге, в ЗАГСе, в суде, в полиции, в
+        прокуратуре, в следственном комитете, в банке, на таможне и в государственных ведомствах.
+      </li>
+      <li>
+        Дистанционный синхронный и последовательный перевод переговоров, конференций и вебинаров
+        (Zoom, Microsoft Teams, WhatsApp, Telegram).
+      </li>
+      <li>
+        Звонки в финскую налоговую инспекцию, в финский банк, партнерам, поставщикам и клиентам по
+        телефону или в мессенджерах.
+      </li>
+      <li>
+        Перевод на конференциях, семинарах и деловых переговорах (последовательный и шушутаж).
+      </li>
+      <li>Сопровождение в командировках по Финляндии и России.</li>
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Виды устного перевода</h2>
+    <FlexRow>
+      <Card>
+        <Icon name="users" />
+        <h3>Последовательный перевод</h3>
+        <p>
+          Выступающий делает паузы после 1–2 предложений, чтобы переводчик мог перевести сказанное.
+          Для последовательного перевода не требуется специальное оборудование.
+        </p>
+        <p><strong>{TRANSLATION_PRICES.interpretingPerHour}</strong></p>
+      </Card>
+
+      <Card>
+        <Icon name="video" />
+        <h3>Синхронный перевод</h3>
+        <p>
+          Перевод осуществляется одновременно с речью говорящего через наушники (работает команда из
+          двух переводчиков со сменой каждые 20–30 минут) или онлайн в Zoom.
+        </p>
+        <p><strong>{TRANSLATION_PRICES.simultaneousPerHour}</strong></p>
+      </Card>
+    </FlexRow>
+  </Section>
+
+  <CTASection
+    badgeText={TRANSLATION_PRICES.interpretingPerHour}
+    title="Давайте работать вместе!"
+    subtitle="Свяжитесь со мной для согласования даты, формата и стоимости устного перевода."
+    buttonText="Заказать устный перевод"
+    buttonHref="/translation/contact/"
+  />
+</BaseLayout>
