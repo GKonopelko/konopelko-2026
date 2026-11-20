@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/ui/Section.astro';
+import Card from '../../components/ui/Card.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+import { TRANSLATION_PRICES } from '../../data/prices';
+
+const pageTitle = 'Стоимость перевода и связанных услуг | Григорий Конопелько';
+const pageDescription =
+  'Цены на устный и письменный перевод с финского и английского языков на русский и обратно. Нотариальное заверение и проставление апостиля.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Section>
+    <h1>Стоимость услуг</h1>
+    <p class="text-center">
+      Перевод с финского и английского языков на русский и с русского языка на финский и английский
+      без посредников.
+    </p>
+  </Section>
+
+  <Section background="light">
+    <Card variant="wide">
+      <h2>Базовые тарифы</h2>
+      <ul class="price-list">
+        <li>
+          <strong>Устный последовательный перевод:</strong>
+          {TRANSLATION_PRICES.interpretingPerHour}
+        </li>
+        <li>
+          <strong>Устный синхронный перевод:</strong>
+          {TRANSLATION_PRICES.simultaneousPerHour}
+        </li>
+        <li>
+          <strong>Письменный перевод:</strong>
+          {TRANSLATION_PRICES.writtenPerWord} ({TRANSLATION_PRICES.writtenPerPage})
+        </li>
+        <li>
+          <strong>Нотариальное заверение перевода:</strong>
+          {TRANSLATION_PRICES.notaryCertification}
+        </li>
+        <li>
+          <strong>Проставление апостиля (ЗАГС / Минюст):</strong> от 5000 руб.
+        </li>
+      </ul>
+    </Card>
+
+    <Card variant="wide">
+      <h2>Перевод типовых документов (онлайн)</h2>
+      <p>
+        Для точного расчета стоимости и сроков вышлите файл, скан или фото документа по электронной
+        почте <strong>grigori.konopelko@mail.ru</strong> или в Telegram / WhatsApp.
+      </p>
+      <ul class="price-list">
+        <li>
+          Онлайн-перевод свидетельства о рождении на финский язык — <strong>от 1000 руб.</strong>
+        </li>
+        <li>
+          Онлайн-перевод свидетельства о браке или разводе на финский язык — <strong
+            >от 1000 руб.</strong>
+        </li>
+        <li>
+          Онлайн-перевод аттестата с приложением на финский язык — <strong>от 1000 руб.</strong>
+        </li>
+        <li>
+          Онлайн-перевод справки для военкомата с финского языка — <strong>от 1000 руб.</strong>
+        </li>
+        <li>
+          Онлайн-перевод диплома (+ приложение к диплому) на финский язык — <strong
+            >от 1000 руб. (+5 руб./слово)</strong>
+        </li>
+        <li>Онлайн-перевод трудовой книжки на финский язык — <strong>от 1000 руб.</strong></li>
+        <li>Онлайн-перевод медицинской справки на финский язык — <strong>от 1000 руб.</strong></li>
+      </ul>
+    </Card>
+  </Section>
+
+  <CTASection
+    badgeText="Опыт работы более 15 лет"
+    title="Нужно рассчитать точную стоимость?"
+    subtitle="Пришлите документ на оценку или опишите задачу по устному переводу — отвечу в ближайшее время."
+    buttonText="Связаться с переводчиком"
+    buttonHref="/translation/contact/"
+  />
+</BaseLayout>
+
+<style>
+  .price-list {
+    width: 100%;
+    text-align: left;
+  }
+</style>

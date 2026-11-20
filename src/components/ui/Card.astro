@@ -2,7 +2,7 @@
 export interface Props {
   href?: string;
   class?: string;
-  variant?: 'default' | 'wide' | 'accent' | 'wide-accent';
+  variant?: 'default' | 'wide' | 'accent' | 'wide-accent' | 'wide-left';
 }
 
 const { href, class: className = '', variant = 'default' } = Astro.props;
@@ -15,6 +15,7 @@ const { href, class: className = '', variant = 'default' } = Astro.props;
       class={`card
       ${variant.includes('wide') ? 'card-wide' : ''}
       ${variant.includes('accent') ? 'card-accent' : ''}
+      ${variant.includes('left') ? 'card-left' : ''}
       ${className}`}
       data-animate="fade-in-up"
     >
@@ -27,6 +28,7 @@ const { href, class: className = '', variant = 'default' } = Astro.props;
       class={`card
       ${variant.includes('wide') ? 'card-wide' : ''}
       ${variant.includes('accent') ? 'card-accent' : ''}
+      ${variant.includes('left') ? 'card-left' : ''}
       ${className}`}
       data-animate="fade-in-up"
     >
@@ -104,6 +106,16 @@ const { href, class: className = '', variant = 'default' } = Astro.props;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .card-left .card-content {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .card-left :global(h2),
+  .card-left :global(h3) {
+    text-align: left;
   }
 
   @media (max-width: 48rem) {
