@@ -8,6 +8,7 @@ import FaqPreview from '../components/faq/FaqPreview.astro';
 import Icon from '../components/ui/Icon.astro';
 import Card from '../components/ui/Card.astro';
 import Button from '../components/ui/Button.astro';
+import { TUTOR_PRICES } from '../data/prices';
 
 const TEACHER_INFO = {
   name: 'Конопелько Григорий Викторович',
@@ -19,7 +20,7 @@ const TEACHER_INFO = {
 const pageTitle = 'Репетитор финского языка | Индивидуальные уроки онлайн с Григорием Конопелько';
 const pageDescription =
   'Профессиональный репетитор финского с 15-летним опытом. Подготовка к YKI, переезду, работе в Финляндии. Индивидуальные онлайн-уроки. Начните говорить по-фински!';
-const canonicalUrl = 'https://grigori.konopelko.com/';
+const canonicalUrl = 'https://konopelko.com';
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -57,15 +58,17 @@ const structuredData = {
 const mainQuestions = [
   {
     question: 'Сколько времени нужно чтобы выучить финский?',
-    answer: 'Для базового общения (уровень А2) нужно 3-6 месяцев...',
+    answer:
+      'Для базового общения (уровень А2) обычно требуется 3–6 месяцев регулярных занятий. Для сдачи экзамена YKI на уровень B1 — от 8 до 12 месяцев при занятиях 2 раза в неделю и выполнении домашних заданий.',
   },
   {
     question: 'Возможно ли обучение с нуля?',
-    answer: 'Да, конечно! Многие мои ученики начинают с полного нуля...',
+    answer:
+      'Да, конечно! Многие мои ученики начинают с полного нуля — с алфавита и правил чтения. Уже через 2–3 недели вы начнете строить первые простые диалоги.',
   },
   {
     question: 'Сколько стоят занятия?',
-    answer: 'Индивидуальные онлайн-уроки стоят 2500 рублей за 60 минут...',
+    answer: `Индивидуальные онлайн-уроки стоят ${TUTOR_PRICES.onlineLesson}. Занятия в паре — ${TUTOR_PRICES.pairLesson}.`,
   },
 ];
 ---
@@ -116,7 +119,7 @@ const mainQuestions = [
         <Icon name="video" />
         <h3>Онлайн-уроки</h3>
         <p>Удобно из любого города<br />Google Meet, Max, интерактивные материалы</p>
-        <div><strong>2500₽ / 60 мин</strong></div>
+        <div><strong>{TUTOR_PRICES.onlineLesson}</strong></div>
       </Card>
 
       <Card>
@@ -130,7 +133,7 @@ const mainQuestions = [
         <Icon name="users" />
         <h3>Занятия в паре</h3>
         <p>Экономия до 30% для вас и друга/коллеги<br />Идеально для совместной мотивации</p>
-        <div><strong>1400₽ / 60 мин с человека</strong></div>
+        <div><strong>{TUTOR_PRICES.pairLesson}</strong></div>
       </Card>
     </FlexRow>
   </Section>
@@ -162,12 +165,6 @@ const mainQuestions = [
         <h3>Контроль прогресса</h3>
         <p>Регулярное тестирование и корректировка программы под ваши успехи</p>
       </Card>
-    </FlexRow>
-    <FlexRow>
-      <Button href="/metodika/" variant="button-link" size="large">
-        <Icon name="award" />
-        Узнать подробнее о методике преподавания →
-      </Button>
     </FlexRow>
   </Section>
 

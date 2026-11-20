@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/ui/Section.astro';
+import FaqSection from '../../components/faq/FaqSection.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { parseQuestions } from '../../lib/markdown';
+
+const faqCategories = await getCollection('faq', ({ data }) => data.category === 'translation');
+const sortedCategories = faqCategories.sort(
+  (a: CollectionEntry<'faq'>, b: CollectionEntry<'faq'>) => a.data.order - b.data.order
+);
+
+const categoriesWithQuestions = sortedCategories.map((category) => ({
+  ...category,
+  questions: parseQuestions(category.body),
+}));
+
+const pageTitle = 'Частые вопросы о переводе финского языка | Григорий Конопелько';
+const pageDescription =
+  'Ответы на популярные вопросы об устном и письменном переводе с финского и английского языков, стоимости, нотариальном заверении и оформлении документов для ВНЖ.';
+const canonicalUrl = 'https://konopelko.com';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+  faqData={categoriesWithQuestions.flatMap((cat) => cat.questions)}
+>
+  <Section>
+    <h1>Ответы на часто задаваемые вопросы о переводе</h1>
+    <p class="text-center">
+      Всё о порядке заказа, расчете стоимости, нотариальном заверении, подготовке документов для ВНЖ
+      и организации устного перевода.
+    </p>
+  </Section>
+
+  {
+    categoriesWithQuestions.map((category, index) => {
+      const background = index % 2 === 0 ? 'light' : 'white';
+      return (
+        <Section background={background}>
+          <h2>{category.data.title}</h2>
+          {category.data.description && <p class="text-center">{category.data.description}</p>}
+          <FaqSection questions={category.questions} />
+        </Section>
+      );
+    })
+  }
+
+  <CTASection
+    badgeText="Опыт работы более 15 лет"
+    title="Остались вопросы по переводу или оформлению документов?"
+    subtitle="Напишите или позвоните мне — подробно проконсультирую и помогу решить вашу задачу."
+    buttonText="Связаться с переводчиком"
+    buttonHref="/translation/contact/"
+  />
+</BaseLayout>

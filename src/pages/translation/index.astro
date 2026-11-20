@@ -5,15 +5,32 @@ import FlexRow from '../../components/ui/FlexRow.astro';
 import Card from '../../components/ui/Card.astro';
 import Icon from '../../components/ui/Icon.astro';
 import Button from '../../components/ui/Button.astro';
+import FaqPreview from '../../components/faq/FaqPreview.astro';
 import CTASection from '../../components/sections/CTASection.astro';
 import { TRANSLATION_PRICES } from '../../data/prices';
 
 const pageTitle = 'Переводчик финского языка в Санкт-Петербурге | Григорий Конопелько';
 const pageDescription =
   'Качественные письменные и устные переводы на финский язык и с финского языка напрямую от переводчика. Оперативно и по приемлемым ценам. Письменный от 5 руб/слово, устный от 2000 руб/час.';
+
+const translationQuestions = [
+  {
+    question: 'Как рассчитывается стоимость письменного перевода?',
+    answer: `<p>Стоимость определяется объемом и сложностью текста. Базовая ставка — ${TRANSLATION_PRICES.writtenPerWord} (${TRANSLATION_PRICES.writtenPerPage} с базовой корректурой и форматированием).</p>`,
+  },
+  {
+    question: 'Можно ли сделать нотариально заверенный перевод?',
+    answer: `<p>Да, я оформляю нотариально заверенные переводы (${TRANSLATION_PRICES.notaryCertification}). Срок выполнения — обычно 1 рабочий день.</p>`,
+  },
+  {
+    question: 'В каком виде принимаются и выдаются файлы?',
+    answer:
+      '<p>Принимаю редактируемые форматы (doc, docx, rtf), а также сканы и фото документов. Готовый перевод отправляю по электронной почте (включая электронное заверение в PDF) или передаю лично в Санкт-Петербурге.</p>',
+  },
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription} faqData={translationQuestions}>
   <Section>
     <h1>Переводчик финского языка в Санкт-Петербурге — Григорий Конопелько</h1>
     <p class="text-center">
@@ -62,6 +79,14 @@ const pageDescription =
         >Давайте работать вместе!</strong
       >
     </p>
+  </Section>
+
+  <Section>
+    <FaqPreview
+      title="Часто спрашивают о переводе"
+      questions={translationQuestions}
+      showMoreLink="/translation/faq/"
+    />
   </Section>
 
   <CTASection

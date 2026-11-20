@@ -16,7 +16,8 @@ export function parseQuestions(
 ): Array<{ question: string; answer: string }> {
   const questions: Array<{ question: string; answer: string }> = [];
 
-  const sections = markdownContent.split('## ').slice(1);
+  // Ищем только заголовки второго уровня (## ) в начале строки
+  const sections = markdownContent.split(/^## /m).slice(1);
 
   for (const section of sections) {
     const lines = section.split('\n');
@@ -33,3 +34,4 @@ export function parseQuestions(
 
   return questions;
 }
+

@@ -7,6 +7,7 @@ const faqCollection = defineCollection({
     description: z.string().optional(),
     order: z.number().default(100),
     featured: z.boolean().default(false),
+    category: z.enum(['learning', 'translation']).default('learning'),
   }),
 });
 
