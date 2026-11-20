@@ -5,15 +5,15 @@ export interface NavLink {
 }
 
 export const tutorLinks: NavLink[] = [
-  { href: '/', label: 'Главная', isHome: true },
+  { href: '/', label: 'Обучение', isHome: true },
   { href: '/about/', label: 'Обо мне' },
   { href: '/articles/?cat=learning', label: 'Материалы' },
-  { href: '/faq/', label: 'Ответы' },
+  { href: '/faq/', label: 'Вопросы' },
   { href: '/contact/', label: 'Контакты' },
 ];
 
 export const translationLinks: NavLink[] = [
-  { href: '/translation/', label: 'Обзор', isHome: true },
+  { href: '/translation/', label: 'Перевод', isHome: true },
   { href: '/translation/interpreting/', label: 'Устный' },
   { href: '/translation/written/', label: 'Письменный' },
   { href: '/translation/price/', label: 'Цена' },

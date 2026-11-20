@@ -1,0 +1,53 @@
+---
+import FlexRow from '../ui/FlexRow.astro';
+import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import { CONTACTS } from '../../data/contacts';
+
+interface Props {
+  emailNote?: string;
+}
+
+const { emailNote = CONTACTS.email.note } = Astro.props;
+---
+
+<FlexRow>
+  <Card>
+    <h3>Телефон</h3>
+    <Button href={CONTACTS.phone.href} variant="button-link" size="large">
+      <Icon name="phone" size="sm" />
+      {CONTACTS.phone.display}
+    </Button>
+    <p>{CONTACTS.phone.hours}</p>
+  </Card>
+
+  <Card>
+    <h3>Email</h3>
+    <Button href={CONTACTS.email.href} variant="button-link" size="large">
+      <Icon name="email" size="sm" />
+      {CONTACTS.email.display}
+    </Button>
+    <p>{emailNote}</p>
+  </Card>
+
+  <Card>
+    <h3>Мессенджеры</h3>
+    {
+      CONTACTS.messengers.map((item) => (
+        <div class="messenger-buttons">
+          <Button
+            href={item.href}
+            variant="button-link"
+            size="large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name={item.icon} size="sm" />
+            {item.name}
+          </Button>
+        </div>
+      ))
+    }
+  </Card>
+</FlexRow>

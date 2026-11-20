@@ -1,6 +1,7 @@
 ---
 import Button from './Button.astro';
 import Icon from './Icon.astro';
+import { CONTACTS } from '../../data/contacts';
 ---
 
 <footer class="footer">
@@ -20,11 +21,11 @@ import Icon from './Icon.astro';
     <div class="footer-col">
       <h3 class="footer-title text-left">Услуги переводчика</h3>
       <ul class="footer-list">
-        <li><a href="/translation/">Обзор услуг перевода</a></li>
+        <li><a href="/translation/">Услуги перевода</a></li>
         <li><a href="/translation/interpreting/">Устный перевод</a></li>
         <li><a href="/translation/written/">Письменный перевод</a></li>
         <li><a href="/translation/certification/">Заверение перевода</a></li>
-        <li><a href="/translation/apostille/">Апостиль</a></li>
+        <li><a href="/translation/apostille/">Проставление апостиля</a></li>
         <li><a href="/translation/price/">Стоимость перевода</a></li>
         <li><a href="/articles/?cat=translation">Заметки о финском языке</a></li>
         <li><a href="/translation/faq/">Вопросы о переводе</a></li>
@@ -35,48 +36,30 @@ import Icon from './Icon.astro';
 
   <div class="footer-bottom">
     <div class="footer-contacts">
-      <Button href="tel:+79117770297" variant="button-link" size="small">
+      <Button href={CONTACTS.phone.href} variant="button-link" size="small">
         <Icon name="phone" size="sm" />
         <span class="contact-text">Позвонить</span>
       </Button>
 
-      <Button href="mailto:grigori.konopelko@mail.ru" variant="button-link" size="small">
+      <Button href={CONTACTS.email.href} variant="button-link" size="small">
         <Icon name="email" size="sm" />
         <span class="contact-text">Написать</span>
       </Button>
 
-      <Button
-        href="https://wa.me"
-        variant="button-link"
-        size="small"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name="whatsapp" size="sm" />
-        <span class="contact-text">WhatsApp</span>
-      </Button>
-
-      <Button
-        href="https://t.me"
-        variant="button-link"
-        size="small"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name="telegram" size="sm" />
-        <span class="contact-text">Telegram</span>
-      </Button>
-
-      <Button
-        href="https://max.ru"
-        variant="button-link"
-        size="small"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name="max" size="sm" />
-        <span class="contact-text">Max</span>
-      </Button>
+      {
+        CONTACTS.messengers.map((item) => (
+          <Button
+            href={item.href}
+            variant="button-link"
+            size="small"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name={item.icon} size="sm" />
+            <span class="contact-text">{item.name}</span>
+          </Button>
+        ))
+      }
     </div>
 
     <p class="footer-copyright text-center">

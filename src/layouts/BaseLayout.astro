@@ -5,6 +5,7 @@ import favicon from '@assets/images/parrotsvg.svg';
 import Analytics from '../components/analytics/Analytics.astro';
 import ScrollAnimations from '../components/scripts/ScrollAnimations.astro';
 import '../styles/global.css';
+import { CONTACTS } from '../data/contacts';
 
 export interface Props {
   title: string;
@@ -18,7 +19,7 @@ export interface Props {
 const {
   title,
   description,
-  canonicalUrl,
+  canonicalUrl = new URL(Astro.url.pathname, Astro.site).href,
   structuredData,
   faqData = [],
   lang = 'ru',
@@ -31,7 +32,6 @@ const isTranslation =
   Astro.url.pathname.startsWith('/en');
 
 const siteUrl = 'https://konopelko.com';
-const fullCanonicalUrl = canonicalUrl || siteUrl + Astro.url.pathname;
 const fullOgImage = siteUrl + '/images/grigori.webp';
 
 const siteName = isTranslation
@@ -44,9 +44,9 @@ const jsonLdString = JSON.stringify(
     '@type': 'ProfessionalService',
     name: siteName,
     description: description,
-    url: fullCanonicalUrl,
-    telephone: 'emergency services',
-    email: 'grigori.konopelko@mail.ru',
+    url: canonicalUrl,
+    telephone: CONTACTS.phone.display,
+    email: CONTACTS.email.display,
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'RU',
@@ -62,7 +62,6 @@ const jsonLdString = JSON.stringify(
     },
   }
 );
-
 
 const faqStructuredData =
   faqData.length > 0
@@ -89,12 +88,12 @@ const faqStructuredData =
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={fullCanonicalUrl} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={fullCanonicalUrl} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={fullOgImage} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
@@ -105,10 +104,6 @@ const faqStructuredData =
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={fullOgImage} />
-
-    <!-- Предварительное подключение для ускорения -->
-    <link rel="preconnect" href="https://grigori.konopelko.com" />
-    <link rel="dns-prefetch" href="https://grigori.konopelko.com" />
 
     <!-- Аналитика -->
     <Analytics />

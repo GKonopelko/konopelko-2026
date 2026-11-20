@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/ui/Section.astro';
+import Card from '../../components/ui/Card.astro';
+import FaqPreview from '../../components/faq/FaqPreview.astro';
+import ContactCards from '../../components/sections/ContactCards.astro';
+import { TRANSLATION_PRICES } from '../../data/prices';
+
+const pageTitle = 'Заказать перевод и контакты | Переводчик Григорий Конопелько';
+const pageDescription =
+  'Заказать устный или письменный перевод с финского и английского языков. Отправьте документ на оценку по email, в Telegram или WhatsApp. Санкт-Петербург и онлайн.';
+const canonicalUrl = 'https://konopelko.com';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Контакты переводчика финского языка',
+  description: pageDescription,
+  url: canonicalUrl,
+  mainEntity: {
+    '@type': 'ProfessionalService',
+    name: 'Переводчик финского и английского языков — Григорий Конопелько',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+7-911-777-02-97',
+      email: 'grigori.konopelko@mail.ru',
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'RU',
+        addressLocality: 'Санкт-Петербург',
+      },
+      contactType: 'customer service',
+      areaServed: ['RU', 'FI'],
+      availableLanguage: ['Russian', 'Finnish', 'English'],
+      hoursAvailable: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '21:00',
+      },
+    },
+  },
+};
+
+const contactQuestions = [
+  {
+    question: 'Как заказать письменный перевод и узнать точную цену?',
+    answer: `Отправьте файл, скан или фото документа по электронной почте или в мессенджер. Я оценю точную стоимость (${TRANSLATION_PRICES.writtenPerWord}) и сроки. После согласования и оплаты вы получите готовый перевод в срок.`,
+  },
+  {
+    question: 'Как быстро выполняется перевод документов?',
+    answer:
+      'Небольшие личные документы (свидетельства, справки, дипломы) обычно переводятся за 1 рабочий день, иногда — в день обращения. Нотариальное заверение занимает 1 рабочий день.',
+  },
+  {
+    question: 'Какие способы оплаты доступны?',
+    answer:
+      'Возможна оплата по номеру телефона через СБП или по реквизитам на банковский счет. С новыми клиентами работа ведется по предоплате.',
+  },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+  structuredData={structuredData}
+>
+  <Section>
+    <h1>Контакты и заказ перевода</h1>
+    <p class="text-center">
+      Для оценки стоимости и сроков письменного перевода вышлите файл, скан или фото удобным для вас
+      способом.
+    </p>
+
+    <ContactCards emailNote="Удобно для отправки файлов на оценку" />
+
+    <Card variant="wide-accent">
+      <h3>Почему стоит обратиться напрямую:</h3>
+      <p>
+        Работа без посредников и агентских наценок. Дипломированный филолог и переводчик (СПбГУ) с
+        опытом работы с 1999 года. Выполняю письменные переводы с нотариальным заверением и
+        апостилем, а также устный последовательный и синхронный перевод в Санкт-Петербурге и онлайн.
+      </p>
+    </Card>
+  </Section>
+
+  <Section background="light">
+    <FaqPreview
+      title="Частые вопросы перед заказом"
+      questions={contactQuestions}
+      showMoreLink="/translation/faq/"
+      limit={3}
+    />
+  </Section>
+</BaseLayout>

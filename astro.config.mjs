@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import react from '@astrojs/react';
 
 export default defineConfig({
-  site: 'https://grigori.konopelko.com/',
+  site: 'https://konopelko.com/',
   base: '/',
   trailingSlash: 'always',
   vite: {
