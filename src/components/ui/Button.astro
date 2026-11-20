@@ -17,6 +17,7 @@ const {
   target,
   rel,
   type = 'button',
+  ...rest
 } = Astro.props;
 
 const baseClass = 'btn';
@@ -31,11 +32,16 @@ const sizeClass = size !== 'medium' ? `btn--${size}` : '';
       class={`${baseClass} ${variantClass} ${sizeClass} ${className}`.trim()}
       target={target}
       rel={rel}
+      {...rest}
     >
       <slot />
     </a>
   ) : (
-    <button class={`${baseClass} ${variantClass} ${sizeClass} ${className}`.trim()} type={type}>
+    <button
+      class={`${baseClass} ${variantClass} ${sizeClass} ${className}`.trim()}
+      type={type}
+      {...rest}
+    >
       <slot />
     </button>
   )
@@ -209,5 +215,11 @@ const sizeClass = size !== 'medium' ? `btn--${size}` : '';
   .btn:active {
     transform: scale(0.98);
     transition: transform 0.1s ease;
+  }
+
+  .btn.is-active {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+    border-color: var(--hover-bg);
   }
 </style>

@@ -13,7 +13,7 @@ const currentLinks = isTranslation ? translationLinks : tutorLinks;
   <div class="nav-links">
     {
       currentLinks.map((link) => {
-        const isActive = pathname === link.href;
+        const isActive = pathname === link.href.split('?')[0];
         return (
           <Button
             href={link.href}
@@ -42,11 +42,6 @@ const currentLinks = isTranslation ? translationLinks : tutorLinks;
         display: flex;
         gap: 0.5rem;
         align-items: center;
-      }
-
-      .nav-links :global(.is-active) {
-        background: var(--hover-bg);
-        color: var(--text-primary);
       }
     }
   </style>

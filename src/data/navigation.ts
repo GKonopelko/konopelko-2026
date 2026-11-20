@@ -7,7 +7,7 @@ export interface NavLink {
 export const tutorLinks: NavLink[] = [
   { href: '/', label: 'Главная', isHome: true },
   { href: '/about/', label: 'Обо мне' },
-  { href: '/articles/', label: 'Материалы' },
+  { href: '/articles/?cat=learning', label: 'Материалы' },
   { href: '/faq/', label: 'Ответы' },
   { href: '/contact/', label: 'Контакты' },
 ];

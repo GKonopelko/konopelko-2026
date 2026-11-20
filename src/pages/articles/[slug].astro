@@ -4,28 +4,40 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
 import Card from '../../components/ui/Card.astro';
 import Button from '../../components/ui/Button.astro';
+import CTASection from '../../components/sections/CTASection.astro';
 
 export async function getStaticPaths() {
   const articleEntries = await getCollection('articles', ({ data }) => {
-    return (data.category === 'learning' || data.category === 'both') && data.lang === 'ru';
+    return data.lang === 'ru';
   });
-  return articleEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+
+  return articleEntries.map((entry) => {
+    const cleanSlug = entry.id.split('/').pop().replace(/\.md$/, '');
+    return {
+      params: { slug: cleanSlug },
+      props: { entry, cleanSlug },
+    };
+  });
 }
 
-const { entry } = Astro.props;
+const { entry, cleanSlug } = Astro.props;
 const { Content } = await entry.render();
 
 const pageTitle = entry.data.title;
-const pageDescription = entry.data.description || 'Полезные материалы по изучению финского языка';
-const canonicalUrl = `https://konopelko.com{entry.slug}/`;
+const pageDescription = entry.data.description || 'Полезные материалы от Григория Конопелько';
+const canonicalUrl = `https://konopelko.com{cleanSlug}/`;
+const isTranslation = entry.data.category === 'translation';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription} canonicalUrl={canonicalUrl}>
   <Section>
-    <Button href="/articles/" size="small" variant="soft"> ← Назад к статьям </Button>
+    <Button
+      href={isTranslation ? '/articles/?cat=translation' : '/articles/?cat=learning'}
+      size="small"
+      variant="soft"
+    >
+      ← Назад к материалам
+    </Button>
   </Section>
 
   <Section>
@@ -37,11 +49,25 @@ const canonicalUrl = `https://konopelko.com{entry.slug}/`;
     </Card>
   </Section>
 
-  <Section background="light">
-    <Card variant="wide">
-      <h3>Сложно учить финский в одиночку?</h3>
-      <p>Обращайтесь, помогу разложить всё по полочкам.</p>
-      <Button href="/contact/" size="medium"> Разобраться вместе </Button>
-    </Card>
-  </Section>
+  {
+    isTranslation ? (
+      <CTASection
+        badgeText="Опыт работы более 15 лет"
+        title="Нужен устный или письменный перевод?"
+        subtitle="Свяжитесь со мной удобным способом, чтобы обсудить вашу задачу."
+        buttonText="Связаться с переводчиком"
+        buttonHref="/translation/contact/"
+      />
+    ) : (
+      <Section background="light">
+        <Card variant="wide">
+          <h3>Сложно учить финский в одиночку?</h3>
+          <p>Обращайтесь, помогу разложить всё по полочкам.</p>
+          <Button href="/contact/" size="medium">
+            Разобраться вместе
+          </Button>
+        </Card>
+      </Section>
+    )
+  }
 </BaseLayout>

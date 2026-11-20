@@ -3,42 +3,99 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
 import Card from '../../components/ui/Card.astro';
+import Button from '../../components/ui/Button.astro';
 
-const allArticles = await getCollection('articles', ({ data }) => {
-  return (data.category === 'learning' || data.category === 'both') && data.lang === 'ru';
-});
+const allArticles = await getCollection('articles', ({ data }) => data.lang === 'ru');
 const sortedArticles = [...allArticles].sort(
   (a, b) => (a.data.order || 100) - (b.data.order || 100)
 );
 
-const pageTitle = 'Полезные статьи по изучению финского языка | Григорий Конопелько';
+const pageTitle = 'Полезные материалы и заметки | Григорий Конопелько';
 const pageDescription =
-  'Авторские разборы, методики и практические советы по преодолению языкового барьера, подготовке к YKI и адаптации в финской школе.';
+  'Статьи об изучении финского языка, школьной программе Финляндии и практике устного и письменного перевода.';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <Section background="light">
     <h1>Полезные материалы</h1>
-    <p class="text-center">
-      Практические советы филолога для взрослых и родителей школьников, обучающихся в Финляндии.
-    </p>
+    <p class="text-center">Статьи об изучении финского языка и заметки из практики переводчика.</p>
+
+    <div class="filter-tabs">
+      <Button variant="soft" size="small" class="tab-btn is-active" data-filter="all">
+        Все материалы
+      </Button>
+      <Button variant="soft" size="small" class="tab-btn" data-filter="learning">
+        Изучение финского
+      </Button>
+      <Button variant="soft" size="small" class="tab-btn" data-filter="translation">
+        Перевод и язык
+      </Button>
+    </div>
   </Section>
 
   <Section>
     {
-      sortedArticles.map((article) => (
-        <Card variant="wide" href={`/articles/${article.slug}/`}>
-          <h3 class="text-left article-title">{article.data.title} →</h3>
-          {article.data.description && (
-            <p class="text-left article-desc">{article.data.description}</p>
-          )}
-        </Card>
-      ))
+      sortedArticles.map((article) => {
+        const cleanSlug = article.id.split('/').pop()?.replace(/\.md$/, '');
+        return (
+          <div class="article-item" data-category={article.data.category}>
+            <Card variant="wide" href={`/articles/${cleanSlug}/`}>
+              <h3 class="text-left article-title">{article.data.title} →</h3>
+              {article.data.description && (
+                <p class="text-left article-desc">{article.data.description}</p>
+              )}
+            </Card>
+          </div>
+        );
+      })
     }
   </Section>
 </BaseLayout>
 
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const items = document.querySelectorAll('.article-item');
+
+  function applyFilter(filter: string) {
+    buttons.forEach((btn) => {
+      btn.classList.toggle('is-active', btn.getAttribute('data-filter') === filter);
+    });
+
+    items.forEach((item) => {
+      const cat = item.getAttribute('data-category');
+      const isVisible = filter === 'all' || cat === filter || cat === 'both';
+      (item as HTMLElement).style.display = isVisible ? 'flex' : 'none';
+    });
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      if (filter) applyFilter(filter);
+    });
+  });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialCat = urlParams.get('cat');
+  if (initialCat && ['learning', 'translation', 'all'].includes(initialCat)) {
+    applyFilter(initialCat);
+  }
+</script>
+
 <style>
+  .filter-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .article-item {
+    display: flex;
+    width: 100%;
+  }
+
   .article-title,
   .article-desc {
     width: 100%;

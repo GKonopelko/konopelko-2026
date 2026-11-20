@@ -11,7 +11,7 @@ import Icon from './Icon.astro';
         <li><a href="/">Индивидуальные уроки</a></li>
         <li><a href="/metodika/">Методика преподавания</a></li>
         <li><a href="/about/">Обо мне и квалификация</a></li>
-        <li><a href="/articles/">Полезные материалы</a></li>
+        <li><a href="/articles/?cat=learning">Полезные материалы</a></li>
         <li><a href="/faq/">Вопросы об обучении</a></li>
         <li><a href="/contact/">Запись на занятия</a></li>
       </ul>
@@ -25,7 +25,7 @@ import Icon from './Icon.astro';
         <li><a href="/translation/written/">Письменный перевод</a></li>
         <li><a href="/translation/certification/">Заверение перевода и апостиль</a></li>
         <li><a href="/translation/price/">Стоимость перевода</a></li>
-        <li><a href="/translation/notes/">Заметки о финском языке</a></li>
+        <li><a href="/articles/?cat=translation">Заметки о финском языке</a></li>
         <li><a href="/translation/faq/">Вопросы о переводе</a></li>
         <li><a href="/translation/contact/">Заказать перевод</a></li>
       </ul>
@@ -78,7 +78,9 @@ import Icon from './Icon.astro';
       </Button>
     </div>
 
-    <p class="footer-copyright text-center">© Конопелько Григорий Викторович, {new Date().getFullYear()}</p>
+    <p class="footer-copyright text-center">
+      © Конопелько Григорий Викторович, {new Date().getFullYear()}
+    </p>
   </div>
 </footer>
 
