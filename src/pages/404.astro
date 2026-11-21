@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import FlexRow from '../components/ui/FlexRow.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<!-- Русская версия (по умолчанию) -->
+<div id="layout-ru">
+  <BaseLayout
+    lang="ru"
+    title="404 — Страница не найдена | Григорий Конопелько"
+    description="Запрашиваемая страница не найдена или была перемещена."
+  >
+    <Section>
+      <p
+        class="text-center"
+        style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1;"
+      >
+        404
+      </p>
+      <h1 class="text-center">Страница не найдена</h1>
+      <p class="text-center">
+        Возможно, вы перешли по старой ссылке после обновления сайта или в адресе допущена опечатка.
+      </p>
+      <FlexRow>
+        <Button href="/" variant="primary" size="large"> Обучение финскому языку </Button>
+        <Button href="/translation/" variant="button-link" size="large">
+          Услуги переводчика →
+        </Button>
+      </FlexRow>
+    </Section>
+  </BaseLayout>
+</div>
+
+<!-- Английская версия -->
+<div id="layout-en" style="display: none;">
+  <BaseLayout
+    lang="en"
+    title="404 — Page Not Found | Grigori Konopelko"
+    description="The requested page could not be found."
+  >
+    <Section>
+      <p
+        class="text-center"
+        style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1;"
+      >
+        404
+      </p>
+      <h1 class="text-center">Page Not Found</h1>
+      <p class="text-center">
+        The page you are looking for may have been moved after a site update, or the link contains a
+        typo.
+      </p>
+      <FlexRow>
+        <Button href="/translation/en/" variant="primary" size="large">
+          Translation Services →
+        </Button>
+        <Button href="/translation/en/contact/" variant="button-link" size="large">
+          Contact
+        </Button>
+      </FlexRow>
+    </Section>
+  </BaseLayout>
+</div>
+
+<!-- Финская версия -->
+<div id="layout-fi" style="display: none;">
+  <BaseLayout
+    lang="fi"
+    title="404 — Sivua ei löytynyt | Grigori Konopelko"
+    description="Haettua sivua ei löytynyt."
+  >
+    <Section>
+      <p
+        class="text-center"
+        style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1;"
+      >
+        404
+      </p>
+      <h1 class="text-center">Sivua ei löytynyt</h1>
+      <p class="text-center">
+        Etsimäsi sivu on saattanut siirtyä sivuston päivityksen yhteydessä tai osoitteessa on
+        kirjoitusvirhe.
+      </p>
+      <FlexRow>
+        <Button href="/translation/fi/" variant="primary" size="large"> Käännöspalvelut → </Button>
+        <Button href="/translation/fi/contact/" variant="button-link" size="large">
+          Ota yhteyttä
+        </Button>
+      </FlexRow>
+    </Section>
+  </BaseLayout>
+</div>
+
+<script is:inline>
+  (function () {
+    const path = window.location.pathname.toLowerCase();
+    const ru = document.getElementById('layout-ru');
+    const en = document.getElementById('layout-en');
+    const fi = document.getElementById('layout-fi');
+
+    if (path.startsWith('/translation/en')) {
+      if (ru) ru.remove();
+      if (fi) fi.remove();
+      if (en) en.style.display = 'block';
+      document.documentElement.lang = 'en';
+      document.title = '404 — Page Not Found | Grigori Konopelko';
+    } else if (path.startsWith('/translation/fi')) {
+      if (ru) ru.remove();
+      if (en) en.remove();
+      if (fi) fi.style.display = 'block';
+      document.documentElement.lang = 'fi';
+      document.title = '404 — Sivua ei löytynyt | Grigori Konopelko';
+    } else {
+      if (en) en.remove();
+      if (fi) fi.remove();
+    }
+  })();
+</script>
