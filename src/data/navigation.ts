@@ -53,8 +53,8 @@ export function getNavigationState(pathname: string) {
 
   const switchText = {
     ru: isTranslation ? '← Преподавание финского языка' : 'Услуги перевода →',
-    fi: '← Venäjän ja suomen opetus (RU)',
-    en: '← Finnish Language Tutoring (RU)',
+    fi: '← Kielen opetus (RU)',
+    en: '← Language Tutoring (RU)',
   }[lang];
 
   return {
