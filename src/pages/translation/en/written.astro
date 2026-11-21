@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import FlexRow from '../../../components/ui/FlexRow.astro';
+import Card from '../../../components/ui/Card.astro';
+import Icon from '../../../components/ui/Icon.astro';
+import Button from '../../../components/ui/Button.astro';
+import CTASection from '../../../components/sections/CTASection.astro';
+import { TRANSLATION_PRICES_I18N } from '../../../data/prices';
+
+const prices = TRANSLATION_PRICES_I18N.en;
+
+const pageTitle = 'Written Translation: Finnish, Russian, English | Grigori Konopelko';
+const pageDescription =
+  'Professional written translations from English and Finnish into Russian, and from Russian into Finnish and English. Notarized translations and translator seal certification.';
+
+const translationAreasEn = [
+  {
+    sphere: 'Economics',
+    examples: 'Commercial offers, contracts, and agreements',
+  },
+  {
+    sphere: 'Advertising & Marketing',
+    examples: 'Brochures, promotional articles, and slogans',
+  },
+  {
+    sphere: 'Real Estate',
+    examples: 'Sale contracts, excerpts from property registers, inspection reports',
+  },
+  {
+    sphere: 'Technologies',
+    examples: 'Product descriptions, technical documentation, user manuals',
+  },
+  {
+    sphere: 'Construction',
+    examples: 'Project documents, protocols, process and assembly charts',
+  },
+  {
+    sphere: 'Environmental Protection',
+    examples: 'Project descriptions, environmental regulations and reports',
+  },
+  {
+    sphere: 'Power Production',
+    examples: 'Technical protocols, energy project documentation',
+  },
+  {
+    sphere: 'Law',
+    examples: 'Lawsuits, legal correspondence, court decisions, decrees',
+  },
+  {
+    sphere: 'Tourism & Restaurants',
+    examples: 'Hotel websites, restaurant menus, hospitality guides',
+  },
+  {
+    sphere: 'History & Humanities',
+    examples: 'History books, museum materials, academic publications',
+  },
+];
+---
+
+<BaseLayout lang="en" title={pageTitle} description={pageDescription}>
+  <Section>
+    <h1>Written Translation: Finnish, Russian, English</h1>
+    <p class="text-center">
+      Translation in all directions: <strong>from English and Finnish into Russian</strong>, as well
+      as <strong>from Russian into Finnish and English</strong>
+    </p>
+
+    <p class="text-center">
+      <strong>Need a high-quality translation? — Contact me!</strong>
+    </p>
+
+    <FlexRow>
+      <Button href="/translation/en/contact/" variant="primary" size="large">
+        Order translation →
+      </Button>
+      <Button href="/translation/en/price/" variant="button-link" size="large">
+        Written Translation Rates
+      </Button>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Quality Control & Comprehensive Document Services</h2>
+    <p>
+      I take great care to ensure the highest quality of every translation. Texts intended for
+      publication are proofread by native editors, guaranteeing natural and accurate results in
+      Finnish, Russian, and English.
+    </p>
+    <p>
+      I provide comprehensive translation of documents for submission to the Finnish consulate,
+      residence permit (Migri) applications, relocating to Finland, and applying to study at Finnish
+      universities and colleges.
+    </p>
+    <p>I also translate websites of various topics and software user interfaces.</p>
+  </Section>
+
+  <Section>
+    <h2>Official Translation Certification</h2>
+    <FlexRow>
+      <Card>
+        <Icon name="award" />
+        <h3>Notarized Translation</h3>
+        <p>
+          Official notarized translations from Finnish and English into Russian. Usually required
+          for birth and marriage certificates, school certificates, diplomas, affidavits, and
+          excerpts from trade registers. According to Russian legal practice, a certified translator
+          signs the completed translation and a notary verifies the signature.
+        </p>
+      </Card>
+
+      <Card>
+        <Icon name="bookOpen" />
+        <h3>Translator's Seal Certification</h3>
+        <p>
+          Certification with the official translator's seal. This type of assurance is most commonly
+          used when translating official certificates and personal documents from Russian into
+          Finnish or English for submission to Finnish authorities.
+        </p>
+      </Card>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Examples of Fields Where I Have Translating Experience</h2>
+    <FlexRow>
+      {
+        translationAreasEn.map((item) => (
+          <Card>
+            <h3>{item.sphere}</h3>
+            <p>{item.examples}</p>
+          </Card>
+        ))
+      }
+    </FlexRow>
+  </Section>
+
+  <CTASection
+    badgeText={prices.writtenPerWord}
+    title="Need to translate or certify documents?"
+    subtitle="Send your file, scan, or photo via email to grigori.konopelko@mail.ru, Telegram, or WhatsApp for an exact quote and turnaround estimate."
+    buttonText="Send a document for a quote"
+    buttonHref="/translation/en/contact/"
+  />
+</BaseLayout>

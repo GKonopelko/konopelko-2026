@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import Card from '../../../components/ui/Card.astro';
+import CTASection from '../../../components/sections/CTASection.astro';
+import { TRANSLATION_PRICES_I18N } from '../../../data/prices';
+
+const prices = TRANSLATION_PRICES_I18N.en;
+
+const pageTitle = 'Translation & Interpreting Pricing | Grigori Konopelko';
+const pageDescription =
+  'Rates for Finnish, Russian, and English written translation, consecutive and simultaneous interpreting, notarization, and apostille services.';
+---
+
+<BaseLayout lang="en" title={pageTitle} description={pageDescription}>
+  <Section>
+    <h1>Cost of Services</h1>
+    <p class="text-center">
+      Direct Finnish, Russian, and English translation and interpreting services without
+      intermediaries.
+    </p>
+  </Section>
+
+  <Section background="light">
+    <Card variant="wide">
+      <h2>Base Rates</h2>
+      <ul class="price-list">
+        <li>
+          <strong>Consecutive interpreting:</strong>
+          {prices.interpretingPerHour}
+        </li>
+        <li>
+          <strong>Simultaneous interpreting:</strong>
+          {prices.simultaneousPerHour}
+        </li>
+        <li>
+          <strong>Written translation:</strong>
+          {prices.writtenPerWord} ({prices.writtenPerPage})
+        </li>
+        <li>
+          <strong>Notarization of translation:</strong>
+          {prices.notaryCertification}
+        </li>
+        <li>
+          <strong>Apostille affixing (Civil Registry Office / Ministry of Justice):</strong>
+          from 5000 RUB
+        </li>
+      </ul>
+    </Card>
+
+    <Card variant="wide">
+      <h2>How Interpreting Is Priced</h2>
+      <p>
+        Interpreting is priced by the hour. In Saint Petersburg, the minimum engagement is <strong
+          >3 hours</strong
+        >. The final rate depends on the format of the event (business talks, court hearings,
+        seminars, conferences), travel time to the venue, and preparation requirements.
+      </p>
+      <p>
+        Interpreting at specialized events requires careful preparation, including reviewing the
+        topics, presentations, and terminology in advance—please share reference materials ahead of
+        time. Long-term projects and multi-day business trips are priced per day by individual
+        agreement.
+      </p>
+    </Card>
+
+    <Card variant="wide">
+      <h2>How Written Translation Is Priced</h2>
+      <p>
+        The cost of written translation depends on the volume, subject complexity, and formatting
+        requirements of the text. Specialized legal, technical, or medical translations require
+        thorough terminology research and proofreading.
+      </p>
+      <p>
+        To get an exact quote and turnaround estimate, please send your file, scan, or photo via
+        email to <strong>grigori.konopelko@mail.ru</strong>, Telegram, or WhatsApp.
+      </p>
+    </Card>
+  </Section>
+
+  <CTASection
+    badgeText="Over 15 Years of Experience"
+    title="Need an exact quote for your project?"
+    subtitle="Send your document for a free assessment or describe your interpreting event — I will get back to you shortly."
+    buttonText="Contact the Translator"
+    buttonHref="/translation/en/contact/"
+  />
+</BaseLayout>
+
+<style>
+  .price-list {
+    width: 100%;
+    text-align: left;
+  }
+</style>

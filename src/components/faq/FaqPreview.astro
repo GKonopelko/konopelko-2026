@@ -2,6 +2,7 @@
 import FaqSection from './FaqSection.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
+import { getNavigationState } from '../../data/navigation';
 
 export interface Props {
   title?: string;
@@ -11,10 +12,24 @@ export interface Props {
   class?: string;
 }
 
+const { lang } = getNavigationState(Astro.url.pathname);
+
+const defaultTitle = {
+  ru: 'Часто спрашивают',
+  fi: 'Usein kysytyt kysymykset',
+  en: 'Frequently Asked Questions',
+}[lang];
+
+const defaultMoreText = {
+  ru: 'Все вопросы и ответы →',
+  fi: 'Kaikki kysymykset ja vastaukset →',
+  en: 'All questions & answers →',
+}[lang];
+
 const {
-  title = 'Часто спрашивают',
+  title = defaultTitle,
   questions,
-  showMoreLink = '/faq/',
+  showMoreLink,
   limit = 3,
   class: className = '',
 } = Astro.props;
@@ -28,7 +43,7 @@ const {
       <div class="faq-preview-footer">
         <Button href={showMoreLink} variant="button-link" size="large">
           <Icon name="bookOpen" />
-          Все вопросы и ответы →
+          {defaultMoreText}
         </Button>
       </div>
     )
