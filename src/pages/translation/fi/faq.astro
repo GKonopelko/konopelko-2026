@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import FaqSection from '../../../components/faq/FaqSection.astro';
+import CTASection from '../../../components/sections/CTASection.astro';
+import { TRANSLATION_PRICES_I18N } from '../../../data/prices';
+
+const prices = TRANSLATION_PRICES_I18N.fi;
+
+const pageTitle = 'Usein kysytyt kysymykset tulkkauksesta ja käännöksistä | Grigori Konopelko';
+const pageDescription =
+  'Vastauksia yleisimpiin kysymyksiin venäjän ja suomen kielen tulkkauksesta, virallisista käännöksistä, apostille-todistuksesta ja hinnoittelusta.';
+
+const faqQuestionsFi = [
+  {
+    question: 'Ketkä ovat asiakkaitanne?',
+    answer: `
+      <p>Asiakkaina ovat mm. lukuisat suomalaiset ja venäläiset seurat ja järjestöt, yhteisöt ja liitot, tutkimuslaitokset, museot, tiedotuskeskukset, oppilaitokset ja korkeakoulut, matkailutoimistot, metalli-, muovi- ja puuteollisuusalan yritykset, rakennus- ja kuljetusalan yritykset, majoitus- ja ravitsemusalan yritykset, mainosalan yritykset, tapahtumajärjestäjät, vientiyritykset, kunnat, käräjäoikeudet, asianajotoimistot, käännöstoimistot sekä yksityishenkilöt.</p>
+      <p><strong>Muutama esimerkki yrityksistä ja organisaatioista, joille olen tehnyt käännöksiä ja tulkkauksia:</strong></p>
+      <p>Aalto-yliopisto, Committee For External Relations of St. Petersburg, Componentality Oy, Cursor Oy, Domitrix Oy, Egotranslating, Ellada service, Euromed Clinic, Finpro Ry, Finn Proto Oy, Finnish Russian Innovation Center, Forbes Suomi, Helsinki Center Pietarissa, Helsingin kaupunki, Ilimpulp, International Paper, Kiiltoplast Oy, Kiiltoclean Oy, Kotkan kaupunki, Kotkasailing Oy, Kouvola Innovation, Lappeenranta Innovation, Lemminkäinen, Leningrad Region Chamber of Commerce and Industry, Pelastakaa Lapset Ry, Peuhkuri, Rafinadhome, Sandvik, Saint-Petersburg Business Contact Centre, Skanska Oy, Solemo Oy, Suomalais-venäläinen kauppakamari, UPM Kymmene, Valtion teknillinen tutkimuskeskus (VTT), Westhome Invest.</p>
+    `,
+  },
+  {
+    question: 'Mitä tulkkaus ja käännös maksavat?',
+    answer: `
+      <p>Voitte työskennellä kääntäjän kanssa suoraan ja jättää välikädet ja alihankkijat pois. Se nopeuttaa prosessia, parantaa työn laatua ja mahdollistaa suoran tiedonkulun.</p>
+      <p><strong>Tulkkaus:</strong> Perushinta Pietarissa on ${prices.interpretingPerHour} (minimitilaus 3 tuntia). Pietarin ulkopuolella (Helsingissä, Kotkassa, Lappeenrannassa, Kouvolassa, Lahdessa, Turussa, Moskovassa, Viipurissa ja muualla) on aina päivähinnoittelu. Pitkäaikaiset toimeksiannot ja useamman päivän työmatkat sovitaan erikseen.</p>
+      <p><strong>Kirjallinen käännös:</strong> Perushinta on ${prices.writtenPerWord} (${prices.writtenPerPage}). Lopullinen hinta määritellään toimeksiannon vaativuuden, kiireellisyyden ja laajuuden perusteella. Säännöllisten toimeksiantojen kohdalla neuvottelemme edullisemman hinnan.</p>
+    `,
+  },
+  {
+    question: 'Konsekutiivisesti vai simultaanisesti?',
+    answer: `
+      <h4>Konsekutiivitulkkaus</h4>
+      <p>Konsekutiivi- eli peräkkäistulkkauksessa puhuja ja tulkki puhuvat vuorotellen. Puhuja puhuu 1–2 minuuttia, minkä jälkeen tulkki tulkkaa sanotun muistiinpanojensa avulla. Konsekutiivitulkkaus sopii neuvotteluihin ja keskusteluihin eikä vaadi erillisiä tulkkauslaitteita.</p>
+      <h4>Simultaanitulkkaus</h4>
+      <p>Simultaanitulkkaus on samanaikaistulkkausta, jossa tulkki työskentelee äänieristetyssä tulkkikopissa ja yleisö kuuntelee tulkkausta kuulokkeiden kautta. Käytetään kokouksissa ja konferensseissa, joissa on runsaasti osallistujia tai useita työkieliä. Yli tunnin tilaisuuksissa työskentelee vähintään kaksi tulkkia vuorotellen.</p>
+      <h4>Kuiskaustulkkaus</h4>
+      <p>Kuiskaustulkkausta käytetään, kun tilaisuudessa on vain 1–3 kuulijaa. Tulkki istuu tulkattavien takana ja tulkkaa kuiskaten samanaikaisesti puhujan puheen.</p>
+      <p><em>Tulkkaus voidaan toteuttaa myös etätulkkauksena puhelin- tai videoyhteyden välityksellä (Zoom, Teams, WhatsApp, Telegram).</em></p>
+    `,
+  },
+  {
+    question: 'Miten saadaan virallinen käännös venäjän kielelle?',
+    answer: `
+      <p>Viralliseksi vahvistettu käännös venäjän kielelle voidaan tehdä suomen-, englannin- tai ruotsinkielisestä asiakirjasta (esim. kauppa- ja väestörekisteriotteet, passien kopiot, yhtiöjärjestykset, verotustodistukset, valtakirjat, pöytäkirjat).</p>
+      <p>Asiakirjojen kansainvälistä virallistamista säätelee Haagin yleissopimus (1961). Jos suomalainen viranomaisasiakirja esitetään Venäjän viranomaisille, siihen tarvitaan ensin <strong>Apostille-todistus</strong> Digi- ja väestötietovirastosta (DVV).</p>
+      <ol>
+        <li>Alkuperäinen asiakirja allekirjoitetaan viranomaisen tai yhtiön valtuutetun henkilön toimesta.</li>
+        <li>Julkinen notaari Suomessa vahvistaa allekirjoittajan valtuudet ja liittää asiakirjaan Apostille-todistuksen.</li>
+        <li>Asiakirja ja Apostille käännetään venäjäksi.</li>
+        <li>Venäläinen notaari vahvistaa virallisen kääntäjän allekirjoituksen käännöksessä.</li>
+        <li>Valmis venäjänkielinen asiakirja on kelvollinen kaikille Venäjän viranomaisille.</li>
+      </ol>
+    `,
+  },
+  {
+    question: 'Miten tilaaja tai tulkattava voi auttaa tulkkauksen onnistumisessa?',
+    answer: `
+      <p><strong>Ennen tulkkausta:</strong> Varaa tulkki ajoissa, kerro tilaisuuden luonteesta ja toimita esitykset, esityslistat sekä tausta-aineistot etukäteen terminologiaan perehtymistä varten.</p>
+      <p><strong>Tulkkaustilanteessa:</strong> Puhu selkeästi ja suoraan keskustelukumppanille (tulkki tulkkaa minä-muodossa). Pidä luontevia taukoja 1–2 virkkeen välein ja vältä paperista liian nopeasti lukemista.</p>
+    `,
+  },
+  {
+    question: 'Montako tulkkia tarvitaan?',
+    answer:
+      '<p>Tulkkien määrä riippuu tilaisuuden kestosta ja tulkattavien kielten määrästä. Yleensä tulkki voi tulkata simultaanisesti yksin korkeintaan tunnin kerrallaan. Jos tilaisuus kestää pidempään tai käytössä on useampia kieliä, tarvitaan vähintään kaksi tulkkia vuorottelemaan.</p>',
+  },
+  {
+    question: 'Milloin tarvitaan tulkkia?',
+    answer:
+      '<p>Tulkkia tarvitaan, kun osapuolilla ei ole yhteistä kieltä. Ammattitulkki välittää puheen lisäksi viestin koko sisällön, merkitykset, sävyn ja kulttuuriset vivahteet, jotta jokainen voi ilmaista itseään yhtä rikkaasti kuin omalla äidinkielellään.</p>',
+  },
+  {
+    question: 'Miten venäläiset sananlaskut käännetään suomeksi?',
+    answer: `
+      <p>Käännettäessä sisältö ja merkitys ovat suoraa sanamuotoa tärkeämpiä — erityisesti sananlaskuissa:</p>
+      <ul>
+        <li>Скупой платит дважды. — <em>Pihi maksaa kahdesti.</em></li>
+        <li>Яблоко от яблони недалеко падает. — <em>Ei omena puusta kauas putoa.</em></li>
+        <li>В гостях хорошо, а дома лучше. — <em>Muu maa mustikka, oma maa mansikka.</em></li>
+        <li>В чужой монастырь со своим уставом не ходят. — <em>Maassa maan tavalla.</em></li>
+        <li>Тише едешь, дальше будешь. — <em>Hiljaa kauas päästään.</em></li>
+        <li>Лучше синица в руке, чем журавль в небе. — <em>Parempi pyy pivossa kuin kymmenen oksalla.</em></li>
+        <li>Не имя красит человека, а человек имя. — <em>Ei nimi miestä pahenna, ellei mies nimeä.</em></li>
+        <li>Не бывает дыма без огня. — <em>Ei savua ilman tulta.</em></li>
+        <li>Век живи – век учись. — <em>Oppia ikä kaikki.</em></li>
+        <li>Как аукнется, так и откликнется. — <em>Niin metsä vastaa kuin sinne huudetaan.</em></li>
+        <li>Лиха беда начало! — <em>Lopussa kiitos seisoo.</em></li>
+      </ul>
+    `,
+  },
+];
+---
+
+<BaseLayout lang="fi" title={pageTitle} description={pageDescription} faqData={faqQuestionsFi}>
+  <Section>
+    <h1>Usein kysytyt kysymykset (UKK)</h1>
+    <p class="text-center">
+      Vastauksia yleisimpiin kysymyksiin tulkkauksesta, virallisista käännöksistä ja
+      yhteistyökäytännöistä.
+    </p>
+  </Section>
+
+  <Section background="light">
+    <FaqSection questions={faqQuestionsFi} />
+  </Section>
+
+  <CTASection
+    badgeText="Suoraan ilman välikäsiä"
+    title="Jäikö jokin vielä askarruttamaan?"
+    subtitle="Ota yhteyttä sähköpostitse grigori.konopelko@mail.ru, Telegramissa tai WhatsAppissa — vastaan mielelläni kysymyksiisi."
+    buttonText="Ota yhteyttä"
+    buttonHref="/translation/fi/contact/"
+  />
+</BaseLayout>

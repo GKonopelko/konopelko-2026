@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import FlexRow from '../../../components/ui/FlexRow.astro';
+import Card from '../../../components/ui/Card.astro';
+import Icon from '../../../components/ui/Icon.astro';
+import Button from '../../../components/ui/Button.astro';
+import CTASection from '../../../components/sections/CTASection.astro';
+import { TRANSLATION_PRICES_I18N } from '../../../data/prices';
+
+const prices = TRANSLATION_PRICES_I18N.fi;
+
+const pageTitle =
+  'Venäjän kielen tulkkaukset — konsekutiivi- ja simultaanitulkkaus | Grigori Konopelko';
+const pageDescription =
+  'Ammattitaitoiset venäjä–suomi–venäjä ja venäjä–englanti–venäjä tulkkaukset Pietarissa ja etänä verkossa. Konferenssi-, neuvottelu-, oikeus- ja asioimistulkkaus ilman välikäsiä.';
+---
+
+<BaseLayout lang="fi" title={pageTitle} description={pageDescription}>
+  <Section>
+    <h1>Venäjän kielen tulkkaukset</h1>
+    <p class="text-center">
+      venäjä – suomi – venäjä • venäjä – englanti – venäjä • suomi – englanti – suomi
+    </p>
+    <p class="text-center">
+      <strong
+        >Toimin henkilökohtaisesti sekä Venäjän ja Suomen parhaiden tulkkien tiimin kanssa suoraan
+        ilman välikäsiä.</strong
+      >
+    </p>
+
+    <FlexRow>
+      <Button href="/translation/fi/contact/" variant="primary" size="large">
+        Tilaa tulkkaus →
+      </Button>
+      <Button href="/translation/fi/price/" variant="button-link" size="large">
+        Tulkkauksen hinnasto
+      </Button>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Sujuvaa viestintää ilman kielimuureja</h2>
+    <p>
+      Säästä aikaa ja hermoja, keskity rauhassa ydinasioiden hoitamiseen ja anna ammattitaitoisen
+      tulkin ratkaista kieliongelmat ja luoda luontevan ja positiivisen ilmapiirin kaikille
+      keskustelun osapuolille.
+    </p>
+    <p>
+      Yliopistokoulutuksen saaneella ammattitulkilla on laaja tulkkauskokemus eri tilanteissa
+      (viranomaiset, tapaamiset, neuvottelut, oikeudenkäynnit, haastattelut, lääkärin vastaanotot,
+      koulutukset, seminaarit, konferenssit, asiakaspalvelu ja jokapäiväinen asiointi). Tavoitteeni
+      on auttaa osapuolia ymmärtämään toisiaan ja välittää sanoma kuulijoille täydellisesti,
+      yksityiskohtia myöten.
+    </p>
+
+    <h3>Tulkkauspalvelumme</h3>
+    <ul>
+      <li>
+        <strong>Etätulkkaus:</strong> WhatsApp, Telegram, Microsoft Teams, Zoom ja puhelut viranomaisille
+        tai liikekumppaneille.
+      </li>
+      <li>
+        <strong>Konferenssitulkkaus:</strong> simultaanitulkkaus ja konsekutiivitulkkaus seminaareissa
+        ja tapahtumissa.
+      </li>
+      <li>
+        <strong>Neuvottelutulkkaus:</strong> konsekutiivitulkkaus ja kuiskaustulkkaus (chuchotage) liikeneuvotteluissa.
+      </li>
+      <li>
+        <strong>Asioimistulkkaus:</strong> tuki virastoissa, pankeissa, lääkärikäynneillä ja arkipäivän
+        asioinnissa.
+      </li>
+      <li>
+        <strong>Oikeustulkkaus ja virallinen tulkkaus:</strong> tulkkaus notaarilla Pietarissa, tuomioistuimissa
+        ja viranomaisasioinnissa.
+      </li>
+    </ul>
+    <p>
+      <strong>Hinnoitteluperiaate:</strong> Pietarissa tuntiveloitus (minimiveloitus 3 tuntia), Pietarin
+      ulkopuolella ja työmatkoilla päiväveloitus sopimuksen mukaan.
+    </p>
+  </Section>
+
+  <Section>
+    <h2>Tulkkausmuodot</h2>
+    <FlexRow>
+      <Card>
+        <Icon name="users" />
+        <h3>Konsekutiivitulkkaus</h3>
+        <p>
+          Puhuja pitää taukoja 1–2 virkkeen tai lyhyen puheenvuoron jälkeen, jolloin tulkki kääntää
+          sanotun. Konsekutiivitulkkaus ei vaadi erillistä tulkkauslaitteistoa.
+        </p>
+        <p><strong>{prices.interpretingPerHour}</strong></p>
+      </Card>
+
+      <Card>
+        <Icon name="video" />
+        <h3>Simultaanitulkkaus</h3>
+        <p>
+          Tulkkaus tapahtuu samanaikaisesti puhujan puheen kanssa tulkkauskopissa kuulokkeiden
+          kautta (kahden tulkin tiimi 20–30 minuutin vuoroissa) tai etänä Zoomissa.
+        </p>
+        <p><strong>{prices.simultaneousPerHour}</strong></p>
+      </Card>
+    </FlexRow>
+  </Section>
+
+  <CTASection
+    badgeText={prices.interpretingPerHour}
+    title="Tavoitteena tyytyväinen asiakas!"
+    subtitle="Ota yhteyttä ajankohdan, tulkkausmuodon ja tarkan hinnan sopimiseksi."
+    buttonText="Pyydä tarjous tulkkauksesta"
+    buttonHref="/translation/fi/contact/"
+  />
+</BaseLayout>

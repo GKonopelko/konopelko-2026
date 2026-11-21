@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import FlexRow from '../../../components/ui/FlexRow.astro';
+import Card from '../../../components/ui/Card.astro';
+import Icon from '../../../components/ui/Icon.astro';
+import Button from '../../../components/ui/Button.astro';
+import FaqPreview from '../../../components/faq/FaqPreview.astro';
+import CTASection from '../../../components/sections/CTASection.astro';
+import { TRANSLATION_PRICES_I18N } from '../../../data/prices';
+
+const prices = TRANSLATION_PRICES_I18N.fi;
+
+const pageTitle = 'Venäjän kielen kääntäjä ja tulkki | Grigori Konopelko';
+const pageDescription =
+  'Venäjän kielen tulkkaukset ja käännökset luotettavasti yli 15 vuoden kokemuksella Suomessa ja Venäjällä. Laadukkaat kielipalvelut suoraan ammattikääntäjältä ilman välikäsiä.';
+
+const translationQuestionsFi = [
+  {
+    question: 'Miten kirjallisen käännöksen hinta määräytyy?',
+    answer: `<p>Käännöksen hinta riippuu tekstin laajuudesta ja vaativuudesta. Perushinta on ${prices.writtenPerWord} (${prices.writtenPerPage} sis. perusoikoluvun ja muotoilun).</p>`,
+  },
+  {
+    question: 'Teettekö virallisia, notaarin vahvistamia käännöksiä?',
+    answer: `<p>Kyllä, teen notaarin vahvistamia virallisia käännöksiä (${prices.notaryCertification}) sekä kääntäjän leimalla varustettuja käännöksiä. Toimitusaika on yleensä 1 työpäivä.</p>`,
+  },
+  {
+    question: 'Missä muodossa tiedostot voi lähettää ja miten valmis käännös toimitetaan?',
+    answer:
+      '<p>Otan vastaan muokattavia tiedostoja (doc, docx, rtf) sekä skannauksia ja valokuvia asiakirjoista. Valmiin käännöksen lähetän sähköpostitse tai luovutan henkilökohtaisesti Pietarissa.</p>',
+  },
+];
+---
+
+<BaseLayout
+  lang="fi"
+  title={pageTitle}
+  description={pageDescription}
+  faqData={translationQuestionsFi}
+>
+  <Section>
+    <h1>Venäjän kielen tulkkaukset ja käännökset luotettavasti</h1>
+    <p class="text-center">
+      <strong
+        >Laadukkaat kielipalvelut suoraan ammattikääntäjältä ilman välikäsiä ja välillisiä
+        kustannuksia</strong
+      >
+    </p>
+    <p class="text-center">
+      venäjä – suomi – venäjä • venäjä – englanti – venäjä • suomi – englanti – suomi
+    </p>
+
+    <FlexRow>
+      <Card>
+        <Icon name="bookOpen" />
+        <h3>Kirjalliset käännökset</h3>
+        <p>Yleiskielen ja erikoisalojen käännökset sekä asiakirjojen viralliset käännökset</p>
+        <p><strong>{prices.writtenPerWord}</strong></p>
+        <Button href="/translation/fi/written/" variant="text-link">Lue lisää →</Button>
+      </Card>
+
+      <Card>
+        <Icon name="users" />
+        <h3>Tulkkauspalvelut</h3>
+        <p>Konsekutiivi- ja simultaanitulkkaukset Pietarissa sekä etänä verkossa</p>
+        <p><strong>{prices.interpretingPerHour}</strong></p>
+        <Button href="/translation/fi/interpreting/" variant="text-link">Lue lisää →</Button>
+      </Card>
+    </FlexRow>
+
+    <FlexRow>
+      <Button href="/translation/fi/contact/" variant="primary" size="large">
+        Pyydä tarjous →
+      </Button>
+      <Button href="/translation/fi/price/" variant="button-link" size="large">
+        Hinnasto ja palvelut
+      </Button>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Yli 15 vuoden kokemus ja kokonaisvaltainen kieliapu</h2>
+    <p>
+      Teen käännöksiä ja tulkkauksia luotettavasti yli 15 vuoden kokemuksella Suomessa ja Venäjällä
+      yksityisille, yrityksille sekä valtion että kuntien organisaatioille. Erikoistuminen suomen,
+      venäjän ja englannin kieliin, nykyaikaiset käännösteknologiset sovellukset (esim. SDL TRADOS)
+      sekä kilpailukykyinen hinnoittelu takaavat työn parhaan hinta-laatusuhteen.
+    </p>
+    <p>
+      Toimintani lähtökohtana on asiakas ja asiakkaan tarpeiden ratkaiseminen joustavasti ja
+      laadusta tinkimättä. Autan myös venäjänkielisten nettisivujen laatimisessa ja päivityksessä
+      sekä muissa kielitaitoa tarvitsevissa töissä. <strong>Tavoitteena tyytyväinen asiakas!</strong
+      >
+    </p>
+  </Section>
+
+  <Section>
+    <FaqPreview
+      title="Usein kysytyt kysymykset"
+      questions={translationQuestionsFi}
+      showMoreLink="/translation/fi/faq/"
+    />
+  </Section>
+
+  <CTASection
+    badgeText="Pietari ja etäpalvelut maailmanlaajuisesti"
+    title="Tarvitsetko tarkan käännöksen ilman välikäsiä?"
+    subtitle="Saat selville käännöksen hinnan ja toimitusajan lähettämällä tiedoston, skannauksen tai kuvan sähköpostitse grigori.konopelko@mail.ru, Telegramissa tai WhatsAppissa."
+    buttonText="Lähetä asiakirja arvioitavaksi"
+    buttonHref="/translation/fi/contact/"
+  />
+</BaseLayout>

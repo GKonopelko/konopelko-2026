@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import FlexRow from '../../../components/ui/FlexRow.astro';
+import Card from '../../../components/ui/Card.astro';
+import Button from '../../../components/ui/Button.astro';
+import CTASection from '../../../components/sections/CTASection.astro';
+
+const pageTitle = 'Toimeksiannot Pietarissa, Leningradin alueella ja Venäjällä | Grigori Konopelko';
+const pageDescription =
+  'Luotettava paikallinen tuki ja toimeksiannot Venäjällä: tiedonhaku, asiakirjojen ja kirjeiden laatiminen venäjäksi, puhelut kumppaneille, edustaminen sekä arkistohaut.';
+
+const assignmentExamples = [
+  {
+    title: 'Tiedonhaku venäjänkielisestä verkosta',
+    description:
+      'Haku Internetin venäjänkielisestä segmentistä, rekistereistä sekä venäläisistä sosiaalisista verkostoista.',
+  },
+  {
+    title: 'Asiakirjojen ja kirjeiden laatiminen venäjäksi',
+    description:
+      'Virallisten kirjeiden, lausuntojen, tiedustelujen, valitusten ja kanteiden kirjoittaminen venäjän kielellä.',
+  },
+  {
+    title: 'Puhelut ja yhteydenotot Venäjällä',
+    description:
+      'Soittaminen potentiaalisille asiakkaille, tavarantoimittajille, yhteistyökumppaneille ja virastoille venäjäksi.',
+  },
+  {
+    title: 'Venäjänkielinen sisällöntuotanto',
+    description:
+      'Verkkosivustojen tekstien, esitteiden ja markkinointimateriaalien laatiminen ja lokalisointi venäjäksi.',
+  },
+  {
+    title: 'Edustaminen Pietarissa ja Venäjällä',
+    description:
+      'Yrityksen ja/tai yksityishenkilön asioiden hoitaminen ja edustaminen paikan päällä valtakirjalla.',
+  },
+  {
+    title: 'Henkilö- ja arkistohaut',
+    description:
+      'Ihmisten etsintä Venäjällä sekä tietojen ja asiakirjojen haku Venäjän valtion ja alueiden arkistoista.',
+  },
+];
+---
+
+<BaseLayout lang="fi" title={pageTitle} description={pageDescription}>
+  <Section>
+    <h1>Toimeksiannot Pietarissa, Leningradin alueella ja Venäjällä</h1>
+    <p class="text-center">
+      Käännös- ja tulkkauspalveluiden lisäksi autan suomalaisia yrityksiä ja yksityishenkilöitä
+      käytännön asioiden hoitamisessa Venäjällä luotettavasti ja ilman välikäsiä.
+    </p>
+
+    <FlexRow>
+      <Button href="/translation/fi/contact/" variant="primary" size="large">
+        Kysy lisää palvelusta →
+      </Button>
+      <Button href="/translation/fi/" variant="button-link" size="large">
+        Käännös- ja tulkkauspalvelut
+      </Button>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Esimerkkejä tarjottavista toimeksiannoista</h2>
+    <FlexRow>
+      {
+        assignmentExamples.map((item) => (
+          <Card>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </Card>
+        ))
+      }
+    </FlexRow>
+  </Section>
+
+  <CTASection
+    badgeText="Pietari • Leningradin alue • Koko Venäjä"
+    title="Tavoitteena tyytyväinen asiakas!"
+    subtitle="Kerro tarpeestasi sähköpostitse grigori.konopelko@mail.ru, Telegramissa tai WhatsAppissa — sovitaan toteutuksesta ja hinnoittelusta."
+    buttonText="Ota yhteyttä"
+    buttonHref="/translation/fi/contact/"
+  />
+</BaseLayout>

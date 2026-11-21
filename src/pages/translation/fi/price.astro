@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import Card from '../../../components/ui/Card.astro';
+import CTASection from '../../../components/sections/CTASection.astro';
+import { TRANSLATION_PRICES_I18N } from '../../../data/prices';
+
+const prices = TRANSLATION_PRICES_I18N.fi;
+
+const pageTitle = 'Käännösten ja tulkkauksen hinnasto | Grigori Konopelko';
+const pageDescription =
+  'Venäjä–suomi–venäjä ja venäjä–englanti–venäjä käännösten ja tulkkausten hinnat suoraan ammattikääntäjältä ilman välikäsiä. Notaarin vahvistus ja apostille.';
+---
+
+<BaseLayout lang="fi" title={pageTitle} description={pageDescription}>
+  <Section>
+    <h1>Hinnasto ja hinnoitteluperusteet</h1>
+    <p class="text-center">
+      Laadukkaat venäjän, suomen ja englannin kielen käännökset ja tulkkaukset suoraan
+      ammattikääntäjältä ilman käännöstoimistojen välikäsiä.
+    </p>
+  </Section>
+
+  <Section background="light">
+    <Card variant="wide">
+      <h2>Perushinnasto</h2>
+      <ul class="price-list">
+        <li>
+          <strong>Konsekutiivitulkkaus:</strong>
+          {prices.interpretingPerHour}
+        </li>
+        <li>
+          <strong>Simultaanitulkkaus:</strong>
+          {prices.simultaneousPerHour}
+        </li>
+        <li>
+          <strong>Kirjallinen käännös:</strong>
+          {prices.writtenPerWord} ({prices.writtenPerPage})
+        </li>
+        <li>
+          <strong>Notaarin vahvistama käännös:</strong>
+          {prices.notaryCertification}
+        </li>
+        <li>
+          <strong>Apostille-todistuksen hankinta Venäjällä (ZAGS / oikeusministeriö):</strong>
+          alk. 5000 RUB
+        </li>
+      </ul>
+    </Card>
+
+    <Card variant="wide">
+      <h2>Tulkkauspalveluiden hinnoittelu</h2>
+      <p>
+        Tulkkauspalveluni hinta Pietarissa perustuu tuntihintaan (minimitilaus Pietarissa on <strong
+          >3 tuntia</strong
+        >). Pietarin ulkopuolella (esim. Helsingissä, Kotkassa, Lappeenrannassa, Kouvolassa,
+        Lahdessa, Turussa, Moskovassa tai Viipurissa) on aina päivähinnoittelu.
+      </p>
+      <p>
+        Palkkion suuruus pitkäaikaisista tulkkaustöistä sovitaan erikseen, ja hinta riippuu
+        tilanteen vaativuudesta, matkan pituudesta sekä aikataulusta. Tulkkaustapahtumaa edeltää
+        perusteellinen valmistautuminen, joten toimitattehan esitykset ja tausta-aineistot
+        etukäteen.
+      </p>
+    </Card>
+
+    <Card variant="wide">
+      <h2>Kirjallisten käännösten hinnoittelu</h2>
+      <p>
+        Käännöspalveluni hinta määritellään toimeksiannon vaativuuden, erikoisalan, kiireellisyyden
+        ja laajuuden perusteella. Säännöllisten toimeksiantojen kohdalla neuvottelemme edullisemman
+        sopimushinnan.
+      </p>
+      <p>
+        Saat selville tarkan hinnan ja toimitusajan lähettämällä tiedoston, skannauksen tai kuvan
+        sähköpostitse <strong>grigori.konopelko@mail.ru</strong>, Telegramissa tai WhatsAppissa.
+      </p>
+    </Card>
+  </Section>
+
+  <CTASection
+    badgeText="Yli 15 vuoden kokemus"
+    title="Tarvitsetko tarkan hinta-arvion?"
+    subtitle="Lähetä asiakirja arvioitavaksi tai kerro tulkkaustarpeestasi — vastaan mahdollisimman pian."
+    buttonText="Pyydä tarjous"
+    buttonHref="/translation/fi/contact/"
+  />
+</BaseLayout>
+
+<style>
+  .price-list {
+    width: 100%;
+    text-align: left;
+  }
+</style>

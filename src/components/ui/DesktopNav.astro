@@ -1,12 +1,9 @@
 ---
-import { tutorLinks, translationLinks } from '../../data/navigation';
+import { getNavigationState } from '../../data/navigation';
 import Button from './Button.astro';
 
 const pathname = Astro.url.pathname;
-const isTranslation =
-  pathname.startsWith('/translation') || pathname.startsWith('/fi') || pathname.startsWith('/en');
-
-const currentLinks = isTranslation ? translationLinks : tutorLinks;
+const { links: currentLinks } = getNavigationState(pathname);
 ---
 
 <nav class="nav-desktop" aria-label="Основная навигация">

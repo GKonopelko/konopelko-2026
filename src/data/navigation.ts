@@ -22,7 +22,7 @@ export const translationLinks: NavLink[] = [
 ];
 
 export const translationLinksFi: NavLink[] = [
-  { href: '/translation/fi/', label: 'Käännös', isHome: true },
+  { href: '/translation/fi/', label: 'Etusivu', isHome: true },
   { href: '/translation/fi/interpreting/', label: 'Tulkkaus' },
   { href: '/translation/fi/written/', label: 'Käännökset' },
   { href: '/translation/fi/price/', label: 'Hinnasto' },

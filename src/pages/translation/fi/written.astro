@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import FlexRow from '../../../components/ui/FlexRow.astro';
+import Card from '../../../components/ui/Card.astro';
+import Icon from '../../../components/ui/Icon.astro';
+import Button from '../../../components/ui/Button.astro';
+import CTASection from '../../../components/sections/CTASection.astro';
+import { TRANSLATION_PRICES_I18N } from '../../../data/prices';
+
+const prices = TRANSLATION_PRICES_I18N.fi;
+
+const pageTitle = 'Venäjän kielen käännökset luotettavasti | Grigori Konopelko';
+const pageDescription =
+  'Yleiskielen ja erikoisalojen käännökset sekä asiakirjojen viralliset käännökset venäjä–suomi–venäjä ja venäjä–englanti–venäjä suoraan ammattikääntäjältä ilman välikäsiä.';
+
+const translationAreasFi = [
+  {
+    sphere: 'Viralliset asiakirjat',
+    examples:
+      'Kauppa- ja väestörekisteriotteet, syntymä- ja vihkitodistukset, tutkintotodistukset, passien kopiot, valtakirjat',
+  },
+  {
+    sphere: 'Liike-elämä ja talous',
+    examples:
+      'Sopimukset, tarjoukset, yhtiöjärjestykset, tilinpäätökset, kokouspöytäkirjat, verotustodistukset',
+  },
+  {
+    sphere: 'Tekniikka ja teollisuus',
+    examples:
+      'Käyttöohjeet, tekninen dokumentaatio, tuotekuvaukset, metalli-, muovi- ja puuteollisuuden materiaalit',
+  },
+  {
+    sphere: 'Rakentaminen ja kiinteistöt',
+    examples:
+      'Kauppakirjat, kiinteistörekisteriotteet, projekti- ja rakennusasiakirjat, kuntotarkastusraportit',
+  },
+  {
+    sphere: 'Oikeus ja hallinto',
+    examples: 'Haastehakemukset, tuomioistuinten päätökset, viranomaiskirjeenvaihto, lausunnot',
+  },
+  {
+    sphere: 'Markkinointi ja verkkosivut',
+    examples:
+      'Venäjän- ja suomenkieliset verkkosivut, esitteet, mainostekstit, matkailualan materiaalit',
+  },
+];
+---
+
+<BaseLayout lang="fi" title={pageTitle} description={pageDescription}>
+  <Section>
+    <h1>Venäjän kielen käännökset luotettavasti</h1>
+    <p class="text-center">
+      venäjä – suomi – venäjä • venäjä – englanti – venäjä • suomi – englanti – suomi
+    </p>
+    <p class="text-center">
+      <strong
+        >Laadukkaat kielipalvelut suoraan ammattikääntäjältä ilman välikäsiä ja välillisiä
+        kustannuksia.</strong
+      >
+    </p>
+
+    <FlexRow>
+      <Button href="/translation/fi/contact/" variant="primary" size="large">
+        Pyydä tarjous käännöksestä →
+      </Button>
+      <Button href="/translation/fi/price/" variant="button-link" size="large">
+        Käännösten hinnasto
+      </Button>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Laadunvarmistus ja kokonaisvaltainen kieliapu</h2>
+    <p>
+      Teen käännöksiä ja tulkkauksia luotettavasti yli 15 vuoden kokemuksella Suomessa ja Venäjällä
+      yksityisille, yrityksille sekä valtion että kuntien organisaatioille. Erikoistuminen suomen,
+      venäjän ja englannin kieliin, pitkä käännösalan kokemus, nykyaikaiset käännösteknologiset
+      sovellukset (esim. SDL TRADOS) sekä kilpailukykyinen hinnoittelu takaavat työn parhaan
+      hinta-laatusuhteen.
+    </p>
+    <p>
+      Julkaistavaksi tarkoitetut käännökset tarkistaa aina kohdekieltä äidinkielenään puhuva
+      oikolukija. Autan myös venäjänkielisten nettisivujen laatimisessa ja päivityksessä sekä muissa
+      kielitaitoa tarvitsevissa töissä.
+    </p>
+  </Section>
+
+  <Section>
+    <h2>Asiakirjojen virallinen vahvistaminen</h2>
+    <FlexRow>
+      <Card>
+        <Icon name="award" />
+        <h3>Notaarin vahvistama käännös</h3>
+        <p>
+          Viralliseksi vahvistetut käännökset suomesta ja englannista venäjäksi Venäjän viranomaisia
+          varten. Virallisen kääntäjän allekirjoituksen vahvistaa Venäjällä julkinen notaari.
+        </p>
+        <p><strong>{prices.notaryCertification}</strong></p>
+      </Card>
+
+      <Card>
+        <Icon name="bookOpen" />
+        <h3>Kääntäjän leimalla vahvistettu käännös</h3>
+        <p>
+          Virallisten asiakirjojen ja henkilökohtaisten todistusten käännökset venäjästä suomeksi
+          tai englanniksi Suomen viranomaisia, oppilaitoksia ja Maahanmuuttovirastoa (Migri) varten.
+        </p>
+        <p><strong>{prices.writtenPerWord}</strong></p>
+      </Card>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Erikoisalat ja käännöskohteet</h2>
+    <FlexRow>
+      {
+        translationAreasFi.map((item) => (
+          <Card>
+            <h3>{item.sphere}</h3>
+            <p>{item.examples}</p>
+          </Card>
+        ))
+      }
+    </FlexRow>
+  </Section>
+
+  <CTASection
+    badgeText={prices.writtenPerWord}
+    title="Tavoitteena tyytyväinen asiakas!"
+    subtitle="Saat selville käännöksen hinnan ja toimitusajan lähettämällä tiedoston, skannauksen tai kuvan sähköpostitse grigori.konopelko@mail.ru, Telegramissa tai WhatsAppissa."
+    buttonText="Lähetä tiedosto arvioitavaksi"
+    buttonHref="/translation/fi/contact/"
+  />
+</BaseLayout>

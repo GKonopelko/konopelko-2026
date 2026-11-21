@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import Card from '../../../components/ui/Card.astro';
+import FaqPreview from '../../../components/faq/FaqPreview.astro';
+import ContactCards from '../../../components/sections/ContactCards.astro';
+import { TRANSLATION_PRICES_I18N } from '../../../data/prices';
+
+const prices = TRANSLATION_PRICES_I18N.fi;
+
+const pageTitle = 'Yhteystiedot ja käännöstilaus | Kääntäjä Grigori Konopelko';
+const pageDescription =
+  'Tilaa venäjän ja suomen kielen tulkkaus tai kirjallinen käännös suoraan ammattikääntäjältä. Lähetä asiakirja hinta-arviota varten sähköpostitse, Telegramissa tai WhatsAppissa.';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Venäjän kielen kääntäjän ja tulkin yhteystiedot',
+  description: pageDescription,
+  url: new URL(Astro.url.pathname, Astro.site).href,
+  mainEntity: {
+    '@type': 'ProfessionalService',
+    name: 'Venäjän kielen kääntäjä ja tulkki — Grigori Konopelko',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+7-911-777-02-97',
+      email: 'grigori.konopelko@mail.ru',
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'RU',
+        addressLocality: 'Saint Petersburg',
+      },
+      contactType: 'customer service',
+      areaServed: ['FI', 'RU'],
+      availableLanguage: ['Finnish', 'Russian', 'English'],
+      hoursAvailable: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '21:00',
+      },
+    },
+  },
+};
+
+const contactQuestionsFi = [
+  {
+    question: 'Miten tilaan kirjallisen käännöksen ja saan tarkan hinta-arvion?',
+    answer: `Lähetä tiedosto, skannaus tai valokuva asiakirjasta sähköpostitse tai pikaviestimellä. Arvioin tarkan hinnan (${prices.writtenPerWord}) ja toimitusajan. Hyväksynnän ja maksun jälkeen saat valmiin käännöksen sovitussa aikataulussa.`,
+  },
+  {
+    question: 'Kuinka nopeasti asiakirjojen käännös valmistuu?',
+    answer:
+      'Tavanomaiset henkilökohtaiset asiakirjat (todistukset, otteet, tutkintotodistukset) käännetään yleensä 1 työpäivässä, joskus jo saman päivän aikana. Notaarin vahvistus vie 1 työpäivän.',
+  },
+  {
+    question: 'Mitä maksutapoja on käytettävissä?',
+    answer:
+      'Maksu onnistuu tilisiirtona tai pikamaksuna. Uusien asiakkaiden kanssa työ aloitetaan ennakkomaksun perusteella.',
+  },
+];
+---
+
+<BaseLayout
+  lang="fi"
+  title={pageTitle}
+  description={pageDescription}
+  structuredData={structuredData}
+>
+  <Section>
+    <h1>Yhteystiedot ja käännöstilaus</h1>
+    <p class="text-center">
+      Saat selville kirjallisen käännöksen hinnan ja toimitusajan lähettämällä tiedoston,
+      skannauksen tai valokuvan sinulle sopivalla tavalla.
+    </p>
+
+    <ContactCards emailNote="Kätevä tiedostojen lähettämiseen hinta-arviota varten" />
+
+    <Card variant="wide-accent">
+      <h3>Miksi kannattaa ottaa yhteyttä suoraan:</h3>
+      <p>
+        Yhteistyö suoraan ammattikääntäjän kanssa ilman käännöstoimistojen välikäsiä ja
+        lisäkustannuksia. Koulutukseltani olen filologi ja kääntäjä (Pietarin valtionyliopisto), ja
+        minulla on kokemusta alalta vuodesta 1999 lähtien. Teen kirjalliset käännökset notaarin
+        vahvistuksella ja apostille-todistuksella sekä konsekutiivi- ja simultaanitulkkaukset
+        Pietarissa ja etänä verkossa.
+      </p>
+    </Card>
+  </Section>
+
+  <Section background="light">
+    <FaqPreview
+      title="Usein kysyttyä ennen tilausta"
+      questions={contactQuestionsFi}
+      showMoreLink="/translation/fi/faq/"
+      limit={3}
+    />
+  </Section>
+</BaseLayout>

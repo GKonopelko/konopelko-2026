@@ -30,20 +30,22 @@ export default defineConfig({
     '/teaching-Kristina.html': '/',
     '/teaching-ru.Irina.html': '/',
 
-    // Временные редиректы для EN и FI версий -> на главную раздела переводов
-    '/index-en.html': '/translation/',
-    '/contacts-en.html': '/translation/contact/',
-    '/interpreting-en.html': '/translation/interpreting/',
-    '/translation-en.html': '/translation/written/',
-    '/price-en.html': '/translation/price/',
+  // Финские страницы
+'/index-fi.html': '/translation/fi/',
+'/contacts-fi.html': '/translation/fi/contact/',
+'/cv-fi.html': '/translation/fi/',
+'/interpreting-fi.html': '/translation/fi/interpreting/',
+'/translation-fi.html': '/translation/fi/written/',
+'/questions-fi.html': '/translation/fi/faq/',
+'/toimeksiannot-fi.html': '/translation/fi/assignments/',
 
-    '/index-fi.html': '/translation/',
-    '/contacts-fi.html': '/translation/contact/',
-    '/cv-fi.html': '/translation/',
-    '/interpreting-fi.html': '/translation/interpreting/',
-    '/translation-fi.html': '/translation/written/',
-    '/questions-fi.html': '/translation/faq/',
-    '/toimeksiannot-fi.html': '/translation/',
+// Английские страницы
+'/index-en.html': '/translation/en/',
+'/contacts-en.html': '/translation/en/contact/',
+'/interpreting-en.html': '/translation/en/interpreting/',
+'/translation-en.html': '/translation/en/written/',
+'/price-en.html': '/translation/en/price/',
+
 
   },
 
