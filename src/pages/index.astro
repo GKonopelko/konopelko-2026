@@ -20,14 +20,13 @@ const TEACHER_INFO = {
 const pageTitle = 'Репетитор финского языка | Индивидуальные уроки онлайн с Григорием Конопелько';
 const pageDescription =
   'Профессиональный репетитор финского с 15-летним опытом. Подготовка к YKI, переезду, работе в Финляндии. Индивидуальные онлайн-уроки. Начните говорить по-фински!';
-const canonicalUrl = 'https://konopelko.com';
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Репетитор финского языка - Григорий Конопелько',
   description: pageDescription,
-  url: canonicalUrl,
+  url: new URL(Astro.url.pathname, Astro.site).href,
   telephone: '+7-911-777-02-97',
   email: 'grigori.konopelko@mail.ru',
   address: {
@@ -76,7 +75,6 @@ const mainQuestions = [
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
-  canonicalUrl={canonicalUrl}
   structuredData={structuredData}
   faqData={mainQuestions}
 >

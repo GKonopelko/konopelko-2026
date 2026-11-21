@@ -10,14 +10,14 @@ import Icon from '../components/ui/Icon.astro';
 const pageTitle = 'О репетиторе финского языка Григории Конопелько | Образование и методика';
 const pageDescription =
   'Филолог СПбГУ со стажировкой в Хельсинки. 15+ лет преподавания финского для русскоязычных. Узнайте о моём уникальном подходе к обучению и успехах учеников.';
-const canonicalUrl = 'https://grigori.konopelko.com/about/';
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Григорий Конопелько',
   jobTitle: 'Репетитор финского языка',
   description: pageDescription,
-  url: canonicalUrl,
+  url: new URL(Astro.url.pathname, Astro.site).href,
+
   email: 'grigori.konopelko@mail.ru',
   address: {
     '@type': 'PostalAddress',
@@ -58,12 +58,7 @@ const aboutQuestions = [
 ];
 ---
 
-<BaseLayout
-  title={pageTitle}
-  description={pageDescription}
-  canonicalUrl={canonicalUrl}
-  structuredData={structuredData}
->
+<BaseLayout title={pageTitle} description={pageDescription} structuredData={structuredData}>
   <Section>
     <h1>Обо мне</h1>
     <p>
@@ -200,8 +195,7 @@ const aboutQuestions = [
     </p>
     <ul>
       <li>
-        <strong>Индивидуальный план:</strong> Программа строится под ваш стартовый уровень, задачи и
-        темп
+        <strong>Индивидуальный план:</strong> Программа строится под ваш стартовый уровень, задачи и темп
       </li>
       <li>
         <strong>Сбалансированность:</strong> Развиваем все ключевые навыки, но фокус всегда на понимании

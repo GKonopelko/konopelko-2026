@@ -12,7 +12,7 @@ const pageDescription =
 const canonicalUrl = 'https://grigori.konopelko.com/students/sever/';
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} canonicalUrl={canonicalUrl}>
+<BaseLayout title={pageTitle} description={pageDescription}>
   <Section>
     <div class="student-header">
       <h1>Семён и Александр</h1>
@@ -23,55 +23,53 @@ const canonicalUrl = 'https://grigori.konopelko.com/students/sever/';
     <h2>Расписание занятий</h2>
     <FlexRow>
       <Card>
-        <h3>Cемен  </h3>
+        <h3>Cемен</h3>
         Понедельник, 19:00-20:00 МСК <br />
         Вторник, 15:00-16:00 МСК
       </Card>
-       <Card>
-        <h3>Александр  </h3>
+      <Card>
+        <h3>Александр</h3>
         Вторник, 18:00-20:00 МСК
       </Card>
-
     </FlexRow>
   </Section>
-<Section>
+  <Section>
     <h2>Материалы</h2>
-  <FlexRow>
-
-    <Card>
-      <h3>Учебные материалы</h3>
-      <Button
-        href="https://drive.google.com/drive/folders/1H-P45PbX1DpbqYEh6S4UyC0Bz4J4sga9?usp=drive_link"
-        target="_blank"
-        variant="primary"
-      >
-        <Icon name="bookOpen" /> Открыть материалы
-      </Button>
-    </Card>
-    <Card>
-      <h3>Конспект Семен</h3>
-      <Button
-        href="https://docs.google.com/document/d/1qd8bLmCBvLtCDI_yALhF2_fMzn0_8VHFxeq29lKMtpI/edit?usp=drive_link"
-        target="_blank"
-        variant="primary"
-      >
-        <Icon name="bookOpen" />
-        Открыть конспект
-      </Button>
-    </Card>
-     <Card>
-      <h3>Конспект Александр</h3>
-      <Button
-        href="https://docs.google.com/document/d/1GMr1H6Nw7m2bacFglhdnS66WBbssZi7b8nm0_wHDs4I/edit?usp=sharing"
-        target="_blank"
-        variant="primary"
-      >
-        <Icon name="bookOpen" />
-        Открыть конспект
-      </Button>
-    </Card>
-  </FlexRow>
-</Section>
+    <FlexRow>
+      <Card>
+        <h3>Учебные материалы</h3>
+        <Button
+          href="https://drive.google.com/drive/folders/1H-P45PbX1DpbqYEh6S4UyC0Bz4J4sga9?usp=drive_link"
+          target="_blank"
+          variant="primary"
+        >
+          <Icon name="bookOpen" /> Открыть материалы
+        </Button>
+      </Card>
+      <Card>
+        <h3>Конспект Семен</h3>
+        <Button
+          href="https://docs.google.com/document/d/1qd8bLmCBvLtCDI_yALhF2_fMzn0_8VHFxeq29lKMtpI/edit?usp=drive_link"
+          target="_blank"
+          variant="primary"
+        >
+          <Icon name="bookOpen" />
+          Открыть конспект
+        </Button>
+      </Card>
+      <Card>
+        <h3>Конспект Александр</h3>
+        <Button
+          href="https://docs.google.com/document/d/1GMr1H6Nw7m2bacFglhdnS66WBbssZi7b8nm0_wHDs4I/edit?usp=sharing"
+          target="_blank"
+          variant="primary"
+        >
+          <Icon name="bookOpen" />
+          Открыть конспект
+        </Button>
+      </Card>
+    </FlexRow>
+  </Section>
   <Section>
     <h2>Полезные ресурсы</h2>
     <FlexRow>

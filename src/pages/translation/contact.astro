@@ -9,14 +9,13 @@ import { TRANSLATION_PRICES } from '../../data/prices';
 const pageTitle = 'Заказать перевод и контакты | Переводчик Григорий Конопелько';
 const pageDescription =
   'Заказать устный или письменный перевод с финского и английского языков. Отправьте документ на оценку по email, в Telegram или WhatsApp. Санкт-Петербург и онлайн.';
-const canonicalUrl = 'https://konopelko.com';
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
   name: 'Контакты переводчика финского языка',
   description: pageDescription,
-  url: canonicalUrl,
+  url: new URL(Astro.url.pathname, Astro.site).href,
   mainEntity: {
     '@type': 'ProfessionalService',
     name: 'Переводчик финского и английского языков — Григорий Конопелько',
@@ -60,12 +59,7 @@ const contactQuestions = [
 ];
 ---
 
-<BaseLayout
-  title={pageTitle}
-  description={pageDescription}
-  canonicalUrl={canonicalUrl}
-  structuredData={structuredData}
->
+<BaseLayout title={pageTitle} description={pageDescription} structuredData={structuredData}>
   <Section>
     <h1>Контакты и заказ перевода</h1>
     <p class="text-center">

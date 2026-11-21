@@ -20,13 +20,11 @@ const categoriesWithQuestions = sortedCategories.map((category) => ({
 const pageTitle = 'Частые вопросы о переводе финского языка | Григорий Конопелько';
 const pageDescription =
   'Ответы на популярные вопросы об устном и письменном переводе с финского и английского языков, стоимости, нотариальном заверении и оформлении документов для ВНЖ.';
-const canonicalUrl = 'https://konopelko.com';
 ---
 
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
-  canonicalUrl={canonicalUrl}
   faqData={categoriesWithQuestions.flatMap((cat) => cat.questions)}
 >
   <Section>

@@ -44,7 +44,7 @@ const jsonLdString = JSON.stringify(
     '@type': 'ProfessionalService',
     name: siteName,
     description: description,
-    url: canonicalUrl,
+    url: new URL(Astro.url.pathname, Astro.site).href,
     telephone: CONTACTS.phone.display,
     email: CONTACTS.email.display,
     address: {

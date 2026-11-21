@@ -20,16 +20,15 @@ export async function getStaticPaths() {
   });
 }
 
-const { entry, cleanSlug } = Astro.props;
+const { entry } = Astro.props;
 const { Content } = await entry.render();
 
 const pageTitle = entry.data.title;
 const pageDescription = entry.data.description || 'Полезные материалы от Григория Конопелько';
-const canonicalUrl = `https://konopelko.com{cleanSlug}/`;
 const isTranslation = entry.data.category === 'translation';
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} canonicalUrl={canonicalUrl}>
+<BaseLayout title={pageTitle} description={pageDescription}>
   <Section>
     <Button
       href={isTranslation ? '/articles/?cat=translation' : '/articles/?cat=learning'}
