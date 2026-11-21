@@ -34,9 +34,21 @@ const isTranslation =
 const siteUrl = 'https://konopelko.com';
 const fullOgImage = siteUrl + '/images/grigori.webp';
 
-const siteName = isTranslation
-  ? 'Переводчик финского языка — Григорий Конопелько'
-  : 'Репетитор финского языка — Григорий Конопелько';
+const siteNames = {
+  ru: isTranslation
+    ? 'Переводчик финского языка — Григорий Конопелько'
+    : 'Репетитор финского языка — Григорий Конопелько',
+  fi: 'Venäjän kielen kääntäjä ja tulkki — Grigori Konopelko',
+  en: 'Finnish-Russian-English Translator & Interpreter — Grigori Konopelko',
+};
+
+const ogLocales = {
+  ru: 'ru_RU',
+  fi: 'fi_FI',
+  en: 'en_US',
+};
+
+const siteName = siteNames[lang];
 
 const jsonLdString = JSON.stringify(
   structuredData || {
@@ -97,7 +109,7 @@ const faqStructuredData =
     <meta property="og:image" content={fullOgImage} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:locale" content={ogLocales[lang]} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />

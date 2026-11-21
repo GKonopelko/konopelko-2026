@@ -4,22 +4,47 @@ import Card from '../ui/Card.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import { CONTACTS } from '../../data/contacts';
+import { getNavigationState } from '../../data/navigation';
 
 interface Props {
   emailNote?: string;
 }
 
-const { emailNote = CONTACTS.email.note } = Astro.props;
+const { lang } = getNavigationState(Astro.url.pathname);
+
+const labels = {
+  ru: {
+    phoneTitle: 'Телефон',
+    phoneHours: CONTACTS.phone.hours,
+    emailNote: CONTACTS.email.note,
+    messengersTitle: 'Мессенджеры',
+  },
+  fi: {
+    phoneTitle: 'Puhelin',
+    phoneHours: 'Ma–La klo 9.00–21.00 (MSK)',
+    emailNote: 'Kätevä tiedostojen lähettämiseen hinta-arviota varten',
+    messengersTitle: 'Pikaviestimet',
+  },
+  en: {
+    phoneTitle: 'Phone',
+    phoneHours: 'Mon–Sat, 09:00–21:00 (MSK)',
+    emailNote: 'Convenient for sending files for a quote',
+    messengersTitle: 'Messengers',
+  },
+};
+
+const current = labels[lang];
+const { emailNote = current.emailNote } = Astro.props;
 ---
 
 <FlexRow>
   <Card>
-    <h3>Телефон</h3>
+    <h3>{current.phoneTitle}</h3>
     <Button href={CONTACTS.phone.href} variant="button-link" size="large">
       <Icon name="phone" size="sm" />
       {CONTACTS.phone.display}
     </Button>
-    <p>{CONTACTS.phone.hours}</p>
+    <p>{current.phoneHours}</p>
   </Card>
 
   <Card>
@@ -32,7 +57,7 @@ const { emailNote = CONTACTS.email.note } = Astro.props;
   </Card>
 
   <Card>
-    <h3>Мессенджеры</h3>
+    <h3>{current.messengersTitle}</h3>
     {
       CONTACTS.messengers.map((item) => (
         <div class="messenger-buttons">

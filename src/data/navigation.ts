@@ -21,5 +21,47 @@ export const translationLinks: NavLink[] = [
   { href: '/translation/contact/', label: 'Контакты' },
 ];
 
-// Временно оставляем для совместимости со старыми файлами до Шага 2 и 3
-// export const navigationLinks = tutorLinks;
+export const translationLinksFi: NavLink[] = [
+  { href: '/translation/fi/', label: 'Käännös', isHome: true },
+  { href: '/translation/fi/interpreting/', label: 'Tulkkaus' },
+  { href: '/translation/fi/written/', label: 'Käännökset' },
+  { href: '/translation/fi/price/', label: 'Hinnasto' },
+  { href: '/translation/fi/faq/', label: 'Kysymykset' },
+  { href: '/translation/fi/contact/', label: 'Yhteys' },
+];
+
+export const translationLinksEn: NavLink[] = [
+  { href: '/translation/en/', label: 'Translation', isHome: true },
+  { href: '/translation/en/interpreting/', label: 'Interpreting' },
+  { href: '/translation/en/written/', label: 'Written' },
+  { href: '/translation/en/price/', label: 'Pricing' },
+  { href: '/translation/en/faq/', label: 'FAQ' },
+  { href: '/translation/en/contact/', label: 'Contact' },
+];
+
+export function getNavigationState(pathname: string) {
+  const isFi = pathname.startsWith('/translation/fi');
+  const isEn = pathname.startsWith('/translation/en');
+  const isTranslation = pathname.startsWith('/translation');
+
+  const lang: 'ru' | 'fi' | 'en' = isFi ? 'fi' : isEn ? 'en' : 'ru';
+
+  let links = tutorLinks;
+  if (isFi) links = translationLinksFi;
+  else if (isEn) links = translationLinksEn;
+  else if (isTranslation) links = translationLinks;
+
+  const switchText = {
+    ru: isTranslation ? '← Преподавание финского языка' : 'Услуги перевода →',
+    fi: '← Venäjän ja suomen opetus (RU)',
+    en: '← Finnish Language Tutoring (RU)',
+  }[lang];
+
+  return {
+    lang,
+    isTranslation,
+    links,
+    switchHref: isTranslation ? '/' : '/translation/',
+    switchText,
+  };
+}

@@ -4,6 +4,7 @@ import DesktopNav from './DesktopNav.astro';
 import BurgerButton from './BurgerButton.astro';
 import LogoLink from './LogoLink.astro';
 import Button from './Button.astro';
+import { getNavigationState } from '../../data/navigation';
 
 interface Props {
   buttonId?: string;
@@ -12,18 +13,14 @@ interface Props {
 
 const { buttonId = 'headerBurger', menuId = 'mobileMenu' } = Astro.props;
 
-// Определяем текущий раздел сайта
 const pathname = Astro.url.pathname;
-const isTranslation =
-  pathname.startsWith('/translation') || pathname.startsWith('/fi') || pathname.startsWith('/en');
+const { lang, isTranslation, switchHref, switchText } = getNavigationState(pathname);
 
-const switchHref = isTranslation ? '/' : '/translation/';
-const desktopSwitchText = isTranslation
-  ? '← Преподавание финского языка'
-  : 'Услуги переводчика финского языка →';
-const mobileSwitchText = isTranslation
-  ? '← Преподавание финского языка'
-  : 'Услуги переводчика финского языка →';
+const langSwitcher = [
+  { code: 'ru', label: 'RU', href: '/translation/' },
+  { code: 'fi', label: 'FI', href: '/translation/fi/' },
+  { code: 'en', label: 'EN', href: '/translation/en/' },
+];
 ---
 
 <header class="header">
@@ -32,8 +29,20 @@ const mobileSwitchText = isTranslation
       <LogoLink showText={true} />
 
       <div class="header-actions">
+        {
+          isTranslation && (
+            <div class="lang-switcher desktop-lang" aria-label="Выбор языка">
+              {langSwitcher.map((item) => (
+                <a href={item.href} class={`lang-link ${lang === item.code ? 'is-active' : ''}`}>
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          )
+        }
+
         <Button href={switchHref} variant="soft" size="small" class="desktop-switch">
-          {desktopSwitchText}
+          {switchText}
         </Button>
         <BurgerButton {buttonId} {menuId} />
       </div>
@@ -45,8 +54,20 @@ const mobileSwitchText = isTranslation
 
     <div class="mobile-switch-bar">
       <Button href={switchHref} variant="soft" size="small" class="mobile-switch">
-        {mobileSwitchText}
+        {switchText}
       </Button>
+
+      {
+        isTranslation && (
+          <div class="lang-switcher mobile-lang" aria-label="Выбор языка">
+            {langSwitcher.map((item) => (
+              <a href={item.href} class={`lang-link ${lang === item.code ? 'is-active' : ''}`}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )
+      }
     </div>
   </div>
   <MobileMenu {menuId} />
@@ -59,7 +80,7 @@ const mobileSwitchText = isTranslation
     initMobileMenu({
       buttonId: 'headerBurger',
       menuId: 'mobileMenu',
-      breakpoint: 64, // 1024px в rem
+      breakpoint: 64,
       onOpen: () => {
         if (typeof window !== 'undefined' && window.gtag) {
           window.gtag('event', 'menu_open', {
@@ -73,7 +94,6 @@ const mobileSwitchText = isTranslation
 </script>
 
 <style>
-  /* === MOBILE FIRST (< 64rem) === */
   .header {
     background: var(--background-white);
     border-bottom: 0.0625rem solid var(--border-light);
@@ -97,25 +117,75 @@ const mobileSwitchText = isTranslation
     gap: 0.5rem;
   }
 
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    background: var(--background-light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--border-radius);
+    padding: 0.15rem;
+    gap: 0.15rem;
+  }
+
+  .lang-link {
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.45rem;
+    border-radius: 4px;
+    color: var(--text-primary);
+    transition: var(--transition);
+  }
+
+  .lang-link:hover {
+    background: var(--accent-soft);
+    color: var(--link-color);
+  }
+
+  .lang-link.is-active {
+    background: var(--link-color);
+    color: #fff;
+  }
+
   .header-actions :global(.desktop-switch),
   .header-bottom {
     display: none;
   }
 
+  .desktop-lang {
+    display: none;
+  }
+
   .mobile-switch-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding-top: 0.5rem;
     margin-top: 0.5rem;
     border-top: 0.0625rem solid var(--border-light);
   }
 
   .mobile-switch-bar :global(.mobile-switch) {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
   }
 
-  /* === DESKTOP (≥ 64rem / 1024px) === */
+  .mobile-lang {
+    flex-shrink: 0;
+  }
   @media (min-width: 64rem) {
     .header-container {
       padding: 0.5rem 1rem;
+    }
+    .desktop-lang {
+      display: inline-flex;
     }
 
     .mobile-switch-bar {

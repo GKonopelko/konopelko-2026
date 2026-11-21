@@ -2,48 +2,136 @@
 import Button from './Button.astro';
 import Icon from './Icon.astro';
 import { CONTACTS } from '../../data/contacts';
+import { getNavigationState } from '../../data/navigation';
+
+const { lang } = getNavigationState(Astro.url.pathname);
+
+const footerContent = {
+  ru: {
+    phone: 'Позвонить',
+    email: 'Написать',
+    copyright: '© Конопелько Григорий Викторович',
+  },
+  fi: {
+    title: 'Käännös- ja tulkkauspalvelut',
+    links: [
+      { href: '/translation/fi/', label: 'Käännöspalvelut' },
+      { href: '/translation/fi/interpreting/', label: 'Tulkkaus' },
+      { href: '/translation/fi/written/', label: 'Kirjalliset käännökset' },
+      { href: '/translation/fi/price/', label: 'Hinnasto' },
+      { href: '/translation/fi/faq/', label: 'Usein kysytyt kysymykset' },
+      { href: '/translation/fi/contact/', label: 'Ota yhteyttä' },
+    ],
+    phone: 'Soita',
+    email: 'Sähköposti',
+    copyright: '© Grigori Konopelko',
+  },
+  en: {
+    title: 'Translation & Interpreting Services',
+    links: [
+      { href: '/translation/en/', label: 'Translation Services' },
+      { href: '/translation/en/interpreting/', label: 'Interpreting' },
+      { href: '/translation/en/written/', label: 'Written Translation' },
+      { href: '/translation/en/price/', label: 'Pricing' },
+      { href: '/translation/en/faq/', label: 'FAQ' },
+      { href: '/translation/en/contact/', label: 'Contact' },
+    ],
+    phone: 'Call',
+    email: 'Email',
+    copyright: '© Grigori Konopelko',
+  },
+};
+
+const currentFooter = footerContent[lang];
 ---
 
 <footer class="footer">
   <div class="footer-columns">
-    <div class="footer-col">
-      <h3 class="footer-title text-left">Обучение финскому языку</h3>
-      <ul class="footer-list">
-        <li><a href="/">Индивидуальные уроки</a></li>
-        <li><a href="/metodika/">Методика преподавания</a></li>
-        <li><a href="/about/">Обо мне и квалификация</a></li>
-        <li><a href="/articles/?cat=learning">Полезные материалы</a></li>
-        <li><a href="/faq/">Вопросы об обучении</a></li>
-        <li><a href="/contact/">Запись на занятия</a></li>
-      </ul>
-    </div>
+    {
+      lang === 'ru' ? (
+        <>
+          <div class="footer-col">
+            <h3 class="footer-title text-left">Обучение финскому языку</h3>
+            <ul class="footer-list">
+              <li>
+                <a href="/">Индивидуальные уроки</a>
+              </li>
+              <li>
+                <a href="/metodika/">Методика преподавания</a>
+              </li>
+              <li>
+                <a href="/about/">Обо мне и квалификация</a>
+              </li>
+              <li>
+                <a href="/articles/?cat=learning">Полезные материалы</a>
+              </li>
+              <li>
+                <a href="/faq/">Вопросы об обучении</a>
+              </li>
+              <li>
+                <a href="/contact/">Запись на занятия</a>
+              </li>
+            </ul>
+          </div>
 
-    <div class="footer-col">
-      <h3 class="footer-title text-left">Услуги переводчика</h3>
-      <ul class="footer-list">
-        <li><a href="/translation/">Услуги перевода</a></li>
-        <li><a href="/translation/interpreting/">Устный перевод</a></li>
-        <li><a href="/translation/written/">Письменный перевод</a></li>
-        <li><a href="/translation/certification/">Заверение перевода</a></li>
-        <li><a href="/translation/apostille/">Проставление апостиля</a></li>
-        <li><a href="/translation/price/">Стоимость перевода</a></li>
-        <li><a href="/articles/?cat=translation">Заметки о финском языке</a></li>
-        <li><a href="/translation/faq/">Вопросы о переводе</a></li>
-        <li><a href="/translation/contact/">Заказать перевод</a></li>
-      </ul>
-    </div>
+          <div class="footer-col">
+            <h3 class="footer-title text-left">Услуги переводчика</h3>
+            <ul class="footer-list">
+              <li>
+                <a href="/translation/">Услуги перевода</a>
+              </li>
+              <li>
+                <a href="/translation/interpreting/">Устный перевод</a>
+              </li>
+              <li>
+                <a href="/translation/written/">Письменный перевод</a>
+              </li>
+              <li>
+                <a href="/translation/certification/">Заверение перевода</a>
+              </li>
+              <li>
+                <a href="/translation/apostille/">Проставление апостиля</a>
+              </li>
+              <li>
+                <a href="/translation/price/">Стоимость перевода</a>
+              </li>
+              <li>
+                <a href="/articles/?cat=translation">Заметки о финском языке</a>
+              </li>
+              <li>
+                <a href="/translation/faq/">Вопросы о переводе</a>
+              </li>
+              <li>
+                <a href="/translation/contact/">Заказать перевод</a>
+              </li>
+            </ul>
+          </div>
+        </>
+      ) : (
+        <div class="footer-col">
+          <h3 class="footer-title text-left">{currentFooter.title}</h3>
+          <ul class="footer-list">
+            {currentFooter.links.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
   </div>
 
   <div class="footer-bottom">
     <div class="footer-contacts">
       <Button href={CONTACTS.phone.href} variant="button-link" size="small">
         <Icon name="phone" size="sm" />
-        <span class="contact-text">Позвонить</span>
+        <span class="contact-text">{currentFooter.phone}</span>
       </Button>
 
       <Button href={CONTACTS.email.href} variant="button-link" size="small">
         <Icon name="email" size="sm" />
-        <span class="contact-text">Написать</span>
+        <span class="contact-text">{currentFooter.email}</span>
       </Button>
 
       {
@@ -63,12 +151,13 @@ import { CONTACTS } from '../../data/contacts';
     </div>
 
     <p class="footer-copyright text-center">
-      © Конопелько Григорий Викторович, {new Date().getFullYear()}
+      {currentFooter.copyright}, {new Date().getFullYear()}
     </p>
   </div>
 </footer>
 
 <style>
+  /* Стили оставьте ваши прежние без изменений */
   .footer {
     border-top: 0.0625rem solid var(--border-light);
     padding: 2rem 0 1.5rem;

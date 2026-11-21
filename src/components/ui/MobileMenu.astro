@@ -1,5 +1,5 @@
 ---
-import { tutorLinks, translationLinks } from '../../data/navigation';
+import { getNavigationState } from '../../data/navigation';
 import Button from './Button.astro';
 import LogoLink from './LogoLink.astro';
 
@@ -10,12 +10,7 @@ interface Props {
 const { menuId } = Astro.props;
 
 const pathname = Astro.url.pathname;
-const isTranslation =
-  pathname.startsWith('/translation') || pathname.startsWith('/fi') || pathname.startsWith('/en');
-
-const currentLinks = isTranslation ? translationLinks : tutorLinks;
-const switchHref = isTranslation ? '/' : '/translation/';
-const switchLabel = isTranslation ? '← Преподавание финского' : 'Услуги переводчика →';
+const { links: currentLinks, switchHref, switchText } = getNavigationState(pathname);
 ---
 
 <nav class="nav-mobile" id={menuId} aria-label="Мобильная навигация" aria-hidden="true">
@@ -30,12 +25,13 @@ const switchLabel = isTranslation ? '← Преподавание финског
     }
 
     <Button href={switchHref} variant="soft" size="medium" class="nav-item--cta">
-      {switchLabel}
+      {switchText}
     </Button>
   </div>
 </nav>
 
 <style>
+  /* Стили оставьте без изменений */
   .nav-mobile {
     position: fixed;
     top: 0;

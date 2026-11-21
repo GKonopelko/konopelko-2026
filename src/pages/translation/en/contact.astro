@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import Card from '../../../components/ui/Card.astro';
+import FaqPreview from '../../../components/faq/FaqPreview.astro';
+import ContactCards from '../../../components/sections/ContactCards.astro';
+
+const pageTitle = 'Contact & Order Translation | Grigori Konopelko';
+const pageDescription =
+  'Order consecutive or simultaneous interpreting and written translation between Finnish, Russian, and English. Send a document for a free quote via email, Telegram, or WhatsApp.';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contacts of Finnish-Russian-English Translator & Interpreter',
+  description: pageDescription,
+  url: new URL(Astro.url.pathname, Astro.site).href,
+  mainEntity: {
+    '@type': 'ProfessionalService',
+    name: 'Finnish-Russian-English Translator & Interpreter — Grigori Konopelko',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+7-911-777-02-97',
+      email: 'grigori.konopelko@mail.ru',
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'RU',
+        addressLocality: 'Saint Petersburg',
+      },
+      contactType: 'customer service',
+      areaServed: ['RU', 'FI'],
+      availableLanguage: ['Russian', 'Finnish', 'English'],
+      hoursAvailable: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '21:00',
+      },
+    },
+  },
+};
+
+const contactQuestionsEn = [
+  {
+    question: 'How do I order a written translation and get an exact quote?',
+    answer:
+      'Send your file, scan, or photo via email (grigori.konopelko@mail.ru), Telegram, or WhatsApp. I will evaluate the exact cost (starting from 5 RUB per word) and turnaround time. Once confirmed, you will receive the completed translation right on schedule.',
+  },
+  {
+    question: 'How fast are personal documents translated?',
+    answer:
+      'Standard personal documents (certificates, diplomas, extracts) are usually translated within 1 business day, and sometimes on the same day. Official notarization takes 1 business day.',
+  },
+  {
+    question: 'What payment methods are available?',
+    answer:
+      'Payment is available via bank transfer or Russian Fast Payment System (SBP). For new clients, work begins upon prepayment.',
+  },
+];
+---
+
+<BaseLayout
+  lang="en"
+  title={pageTitle}
+  description={pageDescription}
+  structuredData={structuredData}
+>
+  <Section>
+    <h1>Contacts & Order Translation</h1>
+    <p class="text-center">
+      To find out the exact price and turnaround time for your written translation, please send your
+      file, scan, or photo via email or messenger.
+    </p>
+
+    <ContactCards emailNote="Convenient for sending files for a quote" />
+
+    <Card variant="wide-accent">
+      <h3>Why work directly with me:</h3>
+      <p>
+        Direct cooperation with no agency markups or intermediaries. Graduated philologist and
+        translator (Saint Petersburg State University) with professional experience since 1999. I
+        provide written translations with official notarization and apostille, as well as
+        consecutive and simultaneous interpreting in Saint Petersburg and online worldwide.
+      </p>
+    </Card>
+  </Section>
+
+  <Section background="light">
+    <FaqPreview
+      title="Frequently Asked Questions Before Ordering"
+      questions={contactQuestionsEn}
+      showMoreLink="/translation/en/faq/"
+      limit={3}
+    />
+  </Section>
+</BaseLayout>

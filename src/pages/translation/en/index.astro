@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import FlexRow from '../../../components/ui/FlexRow.astro';
+import Card from '../../../components/ui/Card.astro';
+import Icon from '../../../components/ui/Icon.astro';
+import Button from '../../../components/ui/Button.astro';
+import FaqPreview from '../../../components/faq/FaqPreview.astro';
+import CTASection from '../../../components/sections/CTASection.astro';
+
+const pageTitle =
+  'Finnish-Russian-English Translator & Interpreter in Saint Petersburg | Grigori Konopelko';
+const pageDescription =
+  'Professional written translations and oral interpreting between Finnish, Russian, and English directly from an experienced native translator. Written translation from 5 RUB/word, interpreting from 2000 RUB/hour.';
+
+const translationQuestionsEn = [
+  {
+    question: 'How is the cost of written translation calculated?',
+    answer:
+      '<p>The price depends on the volume and complexity of the text. The base rate starts from 5 RUB per word (with basic proofreading and formatting included).</p>',
+  },
+  {
+    question: 'Do you provide notarized translations?',
+    answer:
+      '<p>Yes, I provide officially notarized translations of personal and corporate documents. Standard turnaround time is usually 1 business day.</p>',
+  },
+  {
+    question: 'In what formats do you accept and deliver files?',
+    answer:
+      '<p>I accept editable formats (doc, docx, rtf) as well as scans and photos of documents. Completed translations are delivered via email (including digitally certified PDFs) or handed over in person in Saint Petersburg.</p>',
+  },
+];
+---
+
+<BaseLayout
+  lang="en"
+  title={pageTitle}
+  description={pageDescription}
+  faqData={translationQuestionsEn}
+>
+  <Section>
+    <h1>Finnish-Russian-English Translator & Interpreter in Saint Petersburg</h1>
+    <p class="text-center">
+      <strong>Translation without intermediaries at a reasonable price</strong>
+    </p>
+    <p class="text-center">
+      Finnish – Russian – Finnish • English – Russian – English • Finnish – English – Finnish
+    </p>
+
+    <FlexRow>
+      <Card>
+        <Icon name="bookOpen" />
+        <h3>Written Translation</h3>
+        <p>Official documents, personal certificates, general and specialized texts</p>
+        <p><strong>from 5 RUB / word</strong></p>
+        <Button href="/translation/en/written/" variant="text-link">Learn more →</Button>
+      </Card>
+
+      <Card>
+        <Icon name="users" />
+        <h3>Interpreting</h3>
+        <p>Consecutive and simultaneous interpreting in Saint Petersburg and online</p>
+        <p><strong>from 2000 RUB / hour</strong></p>
+        <Button href="/translation/en/interpreting/" variant="text-link">Learn more →</Button>
+      </Card>
+    </FlexRow>
+
+    <FlexRow>
+      <Button href="/translation/en/contact/" variant="primary" size="large">
+        Order translation →
+      </Button>
+      <Button href="/translation/en/price/" variant="button-link" size="large">
+        Pricing & Services
+      </Button>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Over 15 Years of Experience & Comprehensive Linguistic Services</h2>
+    <p>
+      We are professional native translators with a deep understanding of Russian and Finnish
+      languages and business culture. We assist individuals, companies, and organizations in
+      establishing and maintaining reliable relations with foreign partners.
+    </p>
+    <p>
+      Our specialization in Finnish, Russian, and English, combined with modern dictionaries and CAT
+      tools, guarantees the best price-to-quality ratio. We flexibly adapt to your needs and
+      deadlines without compromising on quality. <strong>Let's work together!</strong>
+    </p>
+  </Section>
+
+  <Section>
+    <FaqPreview
+      title="Frequently Asked Questions"
+      questions={translationQuestionsEn}
+      showMoreLink="/translation/en/contact/"
+    />
+  </Section>
+
+  <CTASection
+    badgeText="Saint Petersburg & Online Worldwide"
+    title="Need an accurate translation without intermediaries?"
+    subtitle="To get a quote and turnaround estimate, send your file, scan, or photo via email to grigori.konopelko@mail.ru, Telegram, or WhatsApp."
+    buttonText="Send a document for a quote"
+    buttonHref="/translation/en/contact/"
+  />
+</BaseLayout>

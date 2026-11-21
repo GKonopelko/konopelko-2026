@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import FlexRow from '../../../components/ui/FlexRow.astro';
+import Card from '../../../components/ui/Card.astro';
+import Icon from '../../../components/ui/Icon.astro';
+import Button from '../../../components/ui/Button.astro';
+import CTASection from '../../../components/sections/CTASection.astro';
+
+const pageTitle = 'Finnish-Russian-English Interpreting | Grigori Konopelko';
+const pageDescription =
+  'Professional consecutive and simultaneous interpreting between Finnish, Russian, and English at a reasonable price. Notary interpreting in Saint Petersburg and remote interpreting online.';
+---
+
+<BaseLayout lang="en" title={pageTitle} description={pageDescription}>
+  <Section>
+    <h1>Finnish-Russian-English Consecutive & Simultaneous Interpreting</h1>
+    <p class="text-center">
+      Finnish – Russian – Finnish • English – Russian – English • Finnish – English – Finnish
+    </p>
+    <p class="text-center">
+      <strong
+        >Working personally and with a team of top Finnish and English interpreters directly without
+        intermediaries.</strong
+      >
+    </p>
+
+    <FlexRow>
+      <Button href="/translation/en/contact/" variant="primary" size="large">
+        Order interpreting →
+      </Button>
+      <Button href="/translation/en/price/" variant="button-link" size="large">
+        Interpreting Rates
+      </Button>
+    </FlexRow>
+  </Section>
+
+  <Section background="light">
+    <h2>Effective Communication Without Language Barriers</h2>
+    <p>
+      Save your time and energy, focus on solving your core business tasks, and let a professional
+      interpreter ensure seamless communication and a natural, friendly atmosphere for all
+      participants.
+    </p>
+    <p>
+      The task of a skilled interpreter is to help interlocutors understand each other completely,
+      conveying every nuance and detail accurately. Order consecutive and simultaneous interpreting
+      services directly without agency markups.
+    </p>
+
+    <h3>Situations Where I Can Help</h3>
+    <ul>
+      <li>
+        Official interpreting at a notary office in Saint Petersburg, civil registry office (ZAGS),
+        court, police, prosecutor's office, investigative committee, banks, customs, and other
+        government agencies.
+      </li>
+      <li>
+        Remote simultaneous and consecutive interpreting for negotiations, conferences, and webinars
+        (Zoom, Microsoft Teams, WhatsApp, Telegram).
+      </li>
+      <li>
+        Phone and messenger calls to the Finnish Tax Administration (Vero), banks, business
+        partners, suppliers, and clients.
+      </li>
+      <li>
+        Consecutive and whispered interpreting (chuchotage) during business negotiations and
+        official meetings.
+      </li>
+      <li>Accompaniment on business trips across Finland and Russia.</li>
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Types of Interpreting</h2>
+    <FlexRow>
+      <Card>
+        <Icon name="users" />
+        <h3>Consecutive Interpreting</h3>
+        <p>
+          The speaker pauses every 1 to 3 minutes so the interpreter can convey the message.
+          Consecutive interpreting requires no additional technical equipment.
+        </p>
+        <p><strong>from 2000 RUB / hour</strong></p>
+      </Card>
+
+      <Card>
+        <Icon name="video" />
+        <h3>Simultaneous Interpreting</h3>
+        <p>
+          Interpreting is performed in real time without speaker pauses using a translator's booth
+          and headsets (a team of two interpreters alternating every 20–30 minutes) or online via
+          Zoom.
+        </p>
+        <p><strong>from 5000 RUB / hour</strong></p>
+      </Card>
+    </FlexRow>
+  </Section>
+
+  <CTASection
+    badgeText="from 2000 RUB / hour"
+    title="Let's work together!"
+    subtitle="Contact me to agree on the date, format, and exact cost of interpreting."
+    buttonText="Order interpreting"
+    buttonHref="/translation/en/contact/"
+  />
+</BaseLayout>
