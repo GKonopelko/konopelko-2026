@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import { resolve } from 'path';
 import react from '@astrojs/react';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
   site: 'https://konopelko.com/',
   base: '/',
@@ -58,6 +60,6 @@ export default defineConfig({
       entrypoint: 'astro/assets/services/sharp',
     },
   },
-  integrations: [react()],
+  integrations: [react(), sitemap()],
   output: 'static',
 });
