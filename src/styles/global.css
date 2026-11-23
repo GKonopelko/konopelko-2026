@@ -155,6 +155,17 @@ li {
   margin-bottom: 0.5rem;
 }
 
+.prose h3::first-letter {
+  color: var(--link-color);
+}
+
+.prose h2,
+.prose h3 {
+  text-align: left;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
 /*
 * {
   outline: 1px solid red !important;
