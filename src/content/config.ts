@@ -19,6 +19,7 @@ const articlesCollection = defineCollection({
     order: z.number().default(100),
     category: z.enum(['learning', 'translation', 'both']).default('learning'),
     lang: z.enum(['ru', 'fi', 'en']).default('ru'),
+    draft: z.boolean().default(false),
   }),
 });
 
