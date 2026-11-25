@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Правила нашего дома</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.5; max-width: 650px; margin: 20px auto; padding: 0 15px; color: #111; background: #f8fafc; }
+    .card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    h1 { font-size: 22px; border-bottom: 2px solid #111; padding-bottom: 8px; margin-top: 0; }
+    h2 { font-size: 17px; margin-top: 22px; color: #1e293b; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
+    .checklist { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 15px; margin-top: 24px; }
+    .checklist h2 { margin-top: 0; color: #1d4ed8; }
+    .task { display: flex; align-items: flex-start; gap: 10px; padding: 10px; background: #fff; border-radius: 8px; margin-bottom: 8px; cursor: pointer; border: 1px solid #dbeafe; transition: 0.15s; }
+    .task input[type="checkbox"] { width: 22px; height: 22px; margin-top: 1px; flex-shrink: 0; accent-color: #16a34a; }
+    .task.done span { text-decoration: line-through; color: #64748b; }
+    .status { font-weight: bold; text-align: center; padding: 12px; border-radius: 8px; margin-top: 12px; background: #e2e8f0; color: #334155; }
+    .status.all-done { background: #dcfce7; color: #15803d; }
+    .reset-btn { display: block; width: 100%; margin-top: 10px; padding: 10px; background: none; border: 1px solid #94a3b8; border-radius: 8px; color: #475569; font-size: 14px; cursor: pointer; }
+    .sign { font-style: italic; margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <h1>ПРАВИЛА НАШЕГО ДОМА</h1>
+  <p>Мы живём вместе, поэтому соблюдаем простые правила взаимного уважения: никто не убирает за другого, а здоровый сон важен для всех.</p>
+
+  <h2>1. Режим Wi-Fi и «ночная парковка» телефонов</h2>
+  <ul>
+    <li><b>Учёба в сети:</b> Все онлайн-уроки делаются до 21:00.</li>
+    <li><b>Отбой для гаджетов:</b> В 21:00 домашний Wi-Fi отключается до утра, а все телефоны и часы ставятся на общую зарядную станцию.</li>
+  </ul>
+
+  <h2>2. Порядок в общих зонах (каждый убирает за собой)</h2>
+  <ul>
+    <li><b>Кухня:</b> Поел — сразу убрал крошки со стола и поставил свою посуду в посудомойку (или помыл).</li>
+    <li><b>Прихожая и гостиная:</b> Уличная обувь стоит ровно на коврике, рюкзаки и личные вещи убраны по местам, на диване нет вещей — все убраны по местам.</li>
+    <li><b>Стирка:</b> Грязное бельё относится в общую корзину в ванной. Чистое бельё после сушки каждый убирает сам.</li>
+  </ul>
+
+  <h2>3. Одно общее дело в день (на выбор)</h2>
+  <p>Каждый день каждый ребёнок выбирает и выполняет одно общее дело из списка (кто первый сделал — тот выбрал):</p>
+  <ul>
+    <li>Загрузить грязную посуду в посудомойку (или разобрать чистую) + протереть кухонный стол.</li>
+    <li>Вынести весь мусор + подмести/протереть пол в прихожей.</li>
+    <li>Помочь с ужином / уборкой после него (накрыть на стол, нарезать салат или убрать общую посуду / протереть плиту).</li>
+  </ul>
+
+  <div class="checklist">
+    <h2>Вечерний чек-лист (проверь себя):</h2>
+    <label class="task"><input type="checkbox" onchange="updateStatus()"><span><b>Кухня:</b> крошки убраны, моя посуда в посудомойке или помыта</span></label>
+    <label class="task"><input type="checkbox" onchange="updateStatus()"><span><b>Прихожая и гостиная:</b> обувь стоит ровно, рюкзак и вещи на местах</span></label>
+    <label class="task"><input type="checkbox" onchange="updateStatus()"><span><b>Общее дело:</b> я выполнил(а) одно дело из списка на выбор</span></label>
+    <label class="task"><input type="checkbox" onchange="updateStatus()"><span><b>В 21:00:</b> телефон и часы ставятся на общую зарядную станцию</span></label>
+    <div id="status-box" class="status">Отметь все пункты после выполнения</div>
+    <button type="button" class="reset-btn" onclick="resetChecks()">Сбросить галочки на завтра</button>
+  </div>
+
+  <p class="sign">Папа</p>
+</div>
+
+<script>
+  const boxes = document.querySelectorAll('.task input');
+  const statusBox = document.getElementById('status-box');
+
+  boxes.forEach((box, idx) => {
+    if (localStorage.getItem('rule_' + idx) === '1') {
+      box.checked = true;
+      box.parentElement.classList.add('done');
+    }
+  });
+  updateStatus();
+
+  function updateStatus() {
+    let doneCount = 0;
+    boxes.forEach((box, idx) => {
+      localStorage.setItem('rule_' + idx, box.checked ? '1' : '0');
+      box.parentElement.classList.toggle('done', box.checked);
+      if (box.checked) doneCount++;
+    });
+    if (doneCount === boxes.length) {
+      statusBox.textContent = 'Отлично! Все пункты выполнены 🎉';
+      statusBox.classList.add('all-done');
+    } else {
+      statusBox.textContent = 'Выполнено: ' + doneCount + ' из ' + boxes.length;
+      statusBox.classList.remove('all-done');
+    }
+  }
+
+  function resetChecks() {
+    boxes.forEach(box => box.checked = false);
+    updateStatus();
+  }
+</script>
+</body>
+</html>
