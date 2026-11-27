@@ -11,13 +11,12 @@ import { TRANSLATION_PRICES } from '../../data/prices';
 import TranslatorExperience from '../../components/sections/TranslatorExperience.astro';
 
 const pageTitle = 'Переводчик финского языка в Санкт-Петербурге | Григорий Конопелько';
-const pageDescription =
-  'Качественные письменные и устные переводы на финский язык и с финского языка напрямую от переводчика. Оперативно и по приемлемым ценам. Письменный от 5 руб/слово, устный от 2000 руб/час.';
+const pageDescription = `Качественные письменные и устные переводы на финский язык и с финского языка напрямую от переводчика. Оперативно и по приемлемым ценам. Письменный ${TRANSLATION_PRICES.standardDoc}, устный ${TRANSLATION_PRICES.interpretingPerHour}.`;
 
 const translationQuestions = [
   {
     question: 'Как рассчитывается стоимость письменного перевода?',
-    answer: `<p>Стоимость определяется объемом и сложностью текста. Базовая ставка — ${TRANSLATION_PRICES.writtenPerWord} (${TRANSLATION_PRICES.writtenPerPage} с базовой корректурой и форматированием).</p>`,
+    answer: `<p>Стоимость определяется объемом и сложностью текста. Перевод стандартного личного документа — ${TRANSLATION_PRICES.standardDoc}, объемных текстов — ${TRANSLATION_PRICES.writtenPerWord} (${TRANSLATION_PRICES.writtenPerPage} с базовой корректурой и форматированием).</p>`,
   },
   {
     question: 'Можно ли сделать нотариально заверенный перевод?',
@@ -49,7 +48,7 @@ const translationQuestions = [
         <Icon name="bookOpen" />
         <h3>Письменный перевод</h3>
         <p>Официальные документы, личные справки, общие и специальные тексты</p>
-        <p><strong>{TRANSLATION_PRICES.writtenPerWord}</strong></p>
+        <p><strong>{TRANSLATION_PRICES.standardDoc}</strong></p>
         <Button href="/translation/written/" variant="text-link">Подробнее →</Button>
       </Card>
 
