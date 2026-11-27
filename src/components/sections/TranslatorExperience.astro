@@ -1,0 +1,129 @@
+---
+import Section from '../ui/Section.astro';
+import FlexRow from '../ui/FlexRow.astro';
+import Card from '../ui/Card.astro';
+import Icon from '../ui/Icon.astro';
+import { getNavigationState } from '../../data/navigation';
+
+const { lang } = getNavigationState(Astro.url.pathname);
+
+const content = {
+  ru: {
+    title: 'Опыт и квалификация',
+    lead: 'Профессиональный устный и письменный переводчик финского языка с опытом работы более 15 лет.',
+    sublead:
+      'Работайте напрямую с дипломированным специалистом, который несет личную ответственность за точность перевода и соблюдение сроков.',
+    eduTitle: 'Профильное образование',
+    eduList: [
+      '<strong>Санкт-Петербургский государственный университет (СПбГУ)</strong> — филологический факультет, кафедра финно-угорской филологии (специальность: финский язык).',
+      '<strong>Хельсинкский университет</strong> — факультет гуманитарных наук, кафедра финского языка и литературы (обучение по обмену).',
+      '<strong>Хельсинкская высшая школа экономики</strong> — программа подготовки специалистов по внешнеэкономической деятельности.',
+    ],
+    statusTitle: 'Профессиональный статус',
+    statusList: [
+      '<strong>Более 15 лет практики:</strong> большой опыт устных переводов на официальных визитах и конференциях, а также сложных технических и юридических текстов.',
+      '<strong>Нотариальное заверение:</strong> статус дипломированного переводчика позволяет заверять переводы у любого нотариуса Санкт-Петербурга.',
+      '<strong>Глубокое знание финского менталитета:</strong> опыт жизни, учебы и регулярной работы в Финляндии.',
+    ],
+    clientsTitle: 'Компании и организации, для которых я выполнял переводы',
+    clientsIntro:
+      'Среди моих заказчиков — государственные ведомства, университеты, торгово-промышленные палаты и промышленные концерны России и Финляндии:',
+    clientsList: [
+      '<strong>Государственные и городские структуры:</strong> Комитет по внешним связям Санкт-Петербурга, администрации городов Хельсинки и Котка, суды и нотариальные конторы.',
+      '<strong>Деловые и инновационные центры:</strong> Финско-российская и Ленинградская торгово-промышленные палаты, Finpro Ry, Хельсинки-центр в СПб, Cursor Oy, Kouvola Innovation, Lappeenranta Innovation.',
+      '<strong>Наука, образование и медицина:</strong> Университет Аалто (Aalto University), Государственный технический исследовательский центр Финляндии (VTT), клиника «Евромед».',
+      '<strong>Промышленность, строительство и медиа:</strong> UPM-Kymmene, Sandvik, Skanska, Lemminkäinen, Kiiltoplast Oy, Илим Палп, ЗАО «Интернешнл Пейпер», Forbes Suomi.',
+    ],
+  },
+  fi: {
+    title: 'Kokemus ja pätevyys',
+    lead: 'Ammattitaitoinen suomen ja venäjän kielen kääntäjä ja tulkki, jolla on yli 15 vuoden kokemus.',
+    sublead:
+      'Työskentele suoraan diplomikääntäjän kanssa, joka vastaa henkilökohtaisesti käännöksen tarkkuudesta ja aikataulujen pitävyydestä.',
+    eduTitle: 'Koulutus',
+    eduList: [
+      '<strong>Pietarin valtionyliopisto (SPbU)</strong> — filologinen tiedekunta, suomalais-ugrilaisen filologian laitos (pääaineena suomen kieli).',
+      '<strong>Helsingin yliopisto</strong> — humanistinen tiedekunta, suomen kielen ja kirjallisuuden laitos (vaihto-opiskelu).',
+      '<strong>Helsingin kauppakorkeakoulu</strong> — ulkomaankaupan asiantuntijakoulutus.',
+    ],
+    statusTitle: 'Ammatillinen pätevyys',
+    statusList: [
+      '<strong>Yli 15 vuoden kokemus:</strong> laaja kokemus virallisten vierailujen ja konferenssien tulkkauksesta sekä vaativista teknisistä ja juridisista käännöksistä.',
+      '<strong>Notaarin vahvistamat käännökset:</strong> diplomikääntäjän pätevyys oikeuttaa vahvistamaan käännökset Pietarin notaareilla.',
+      '<strong>Suomalaisen kulttuurin tuntemus:</strong> pitkä kokemus asumisesta, opiskelusta ja työskentelystä Suomessa.',
+    ],
+    clientsTitle: 'Yritykset ja organisaatiot, joille olen tehnyt käännöksiä',
+    clientsIntro:
+      'Asiakkaisiini kuuluu valtion virastoja, yliopistoja, kauppakamareita sekä suomalaisia ja venäläisiä suuryrityksiä:',
+    clientsList: [
+      '<strong>Julkinen sektori:</strong> Pietarin ulkosuhdekomitea, Helsingin ja Kotkan kaupungit, tuomioistuimet ja notaaritoimistot.',
+      '<strong>Kauppakamarit ja kehitysyhtiöt:</strong> Suomalais-Venäläinen kauppakamari, Finpro Ry, Helsinki-keskus Pietarissa, Cursor Oy, Kouvola Innovation, Lappeenranta Innovation.',
+      '<strong>Tiede, koulutus ja terveydenhuolto:</strong> Aalto-yliopisto, Teknologian tutkimuskeskus VTT, Euromed-klinikka.',
+      '<strong>Teollisuus, rakentaminen ja media:</strong> UPM-Kymmene, Sandvik, Skanska, Lemminkäinen, Kiiltoplast Oy, Ilim Pulp, International Paper, Forbes Suomi.',
+    ],
+  },
+  en: {
+    title: 'Experience & Qualifications',
+    lead: 'Professional Finnish–Russian–English translator and interpreter with over 15 years of experience.',
+    sublead:
+      'Work directly with a certified specialist who takes personal responsibility for translation accuracy and meeting your deadlines.',
+    eduTitle: 'Education',
+    eduList: [
+      '<strong>Saint Petersburg State University (SPbU)</strong> — Faculty of Philology, Department of Finno-Ugric Philology (Finnish Language).',
+      '<strong>University of Helsinki</strong> — Faculty of Arts, Department of Finnish Language and Literature (Exchange Program).',
+      '<strong>Helsinki School of Economics</strong> — Foreign Trade Specialist Program.',
+    ],
+    statusTitle: 'Professional Credentials',
+    statusList: [
+      '<strong>Over 15 years of practice:</strong> extensive background in conference interpreting, official delegations, and complex technical or legal translations.',
+      '<strong>Notarized translations:</strong> certified degree allows official notarization of documents in Saint Petersburg.',
+      '<strong>Deep cultural insight:</strong> years of living, studying, and working closely with Finnish businesses and institutions.',
+    ],
+    clientsTitle: 'Selected Clients & Organizations',
+    clientsIntro:
+      'My clients include government agencies, universities, chambers of commerce, and leading industrial corporations in Finland and Russia:',
+    clientsList: [
+      '<strong>Government & Municipalities:</strong> Committee for External Relations of Saint Petersburg, Cities of Helsinki and Kotka, courts, and notary offices.',
+      '<strong>Business & Innovation Agencies:</strong> Finnish-Russian Chamber of Commerce, Finpro Ry, Helsinki Centre in St. Petersburg, Cursor Oy, Kouvola Innovation, Lappeenranta Innovation.',
+      '<strong>Science, Education & Healthcare:</strong> Aalto University, VTT Technical Research Centre of Finland, Euromed Clinic.',
+      '<strong>Industry, Construction & Media:</strong> UPM-Kymmene, Sandvik, Skanska, Lemminkäinen, Kiiltoplast Oy, Ilim Pulp, International Paper, Forbes Suomi.',
+    ],
+  },
+};
+
+const current = content[lang];
+---
+
+<Section background="light">
+  <h2>{current.title}</h2>
+  <p class="text-center">
+    <strong>{current.lead}</strong><br />
+    {current.sublead}
+  </p>
+
+  <FlexRow>
+    <Card>
+      <Icon name="bookOpen" />
+      <h3>{current.eduTitle}</h3>
+      <ul>
+        {current.eduList.map((item) => <li set:html={item} />)}
+      </ul>
+    </Card>
+
+    <Card>
+      <Icon name="users" />
+      <h3>{current.statusTitle}</h3>
+      <ul>
+        {current.statusList.map((item) => <li set:html={item} />)}
+      </ul>
+    </Card>
+  </FlexRow>
+
+  <div style="margin-top: 2rem;">
+    <h3>{current.clientsTitle}</h3>
+    <p class="text-center">{current.clientsIntro}</p>
+    <ul>
+      {current.clientsList.map((item) => <li set:html={item} />)}
+    </ul>
+  </div>
+</Section>

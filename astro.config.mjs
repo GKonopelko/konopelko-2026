@@ -80,6 +80,16 @@ export default defineConfig({
 
     '/price-en.html': '/translation/en/price/',
     '/price-en/': '/translation/en/price/',
+
+
+        // Корневые разделы и index.php
+    '/index.php': '/',
+    '/index.php/fi/': '/translation/fi/',
+    '/index.php/en/': '/translation/en/',
+    '/ru/': '/',
+    '/en/': '/translation/en/',
+    '/fi/': '/translation/fi/',
+
   },
 
   vite: {

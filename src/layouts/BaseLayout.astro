@@ -6,6 +6,7 @@ import Analytics from '../components/analytics/Analytics.astro';
 import ScrollAnimations from '../components/scripts/ScrollAnimations.astro';
 import '../styles/global.css';
 import { CONTACTS } from '../data/contacts';
+import { TRANSLATION_PRICES_I18N, TUTOR_PRICES } from '../data/prices';
 
 export interface Props {
   title: string;
@@ -50,27 +51,49 @@ const ogLocales = {
 
 const siteName = siteNames[lang];
 
+const currentTranslationPrices = TRANSLATION_PRICES_I18N[lang];
+
 const jsonLdString = JSON.stringify(
   structuredData || {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': isTranslation ? 'ProfessionalService' : 'EducationalOrganization',
     name: siteName,
     description: description,
     url: new URL(Astro.url.pathname, Astro.site).href,
     telephone: CONTACTS.phone.display,
     email: CONTACTS.email.display,
+    image: fullOgImage,
+    priceRange: isTranslation
+      ? `${currentTranslationPrices.writtenPerWord} — ${currentTranslationPrices.interpretingPerHour}`
+      : `${TUTOR_PRICES.pairLesson} — ${TUTOR_PRICES.onlineLesson}`,
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'RU',
       addressLocality: 'Санкт-Петербург',
     },
-    areaServed: ['Россия', 'Финляндия'],
-    serviceType: isTranslation ? 'Услуги устного и письменного переводчика' : 'Языковые курсы',
-    provider: {
+    areaServed: isTranslation ? ['Россия', 'Финляндия'] : ['Россия', 'Финляндия', 'Весь мир'],
+    knowsAbout: [
+      'Преподавание финского языка',
+      'Подготовка к экзамену YKI',
+      'Письменный перевод с финского и на финский язык',
+      'Устный последовательный и синхронный перевод',
+      'Нотариальный перевод документов',
+    ],
+    founder: {
       '@type': 'Person',
-      name: 'Григорий Конопелько',
-      jobTitle: isTranslation ? 'Переводчик финского языка' : 'Репетитор финского языка',
-      experienceYears: '15',
+      name: 'Григорий Викторович Конопелько',
+      jobTitle: 'Преподаватель и переводчик финского языка',
+      alumniOf: [
+        {
+          '@type': 'CollegeOrUniversity',
+          name: 'Санкт-Петербургский государственный университет',
+        },
+        {
+          '@type': 'CollegeOrUniversity',
+          name: 'Хельсинкский университет',
+        },
+      ],
+      knowsLanguage: ['ru', 'fi', 'en'],
     },
   }
 );

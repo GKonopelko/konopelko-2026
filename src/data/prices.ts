@@ -5,6 +5,7 @@ export const TRANSLATION_PRICES_I18N = {
     interpretingPerHour: 'от 2000 руб / час',
     simultaneousPerHour: 'от 3500 руб / час',
     notaryCertification: 'от 1000 руб / документ',
+    standardDoc: 'от 1000 руб / документ',
   },
   fi: {
     writtenPerWord: 'alk. 5 RUB / sana',
@@ -12,6 +13,7 @@ export const TRANSLATION_PRICES_I18N = {
     interpretingPerHour: 'alk. 2000 RUB / tunti',
     simultaneousPerHour: 'alk. 3500 RUB / tunti',
     notaryCertification: 'alk. 1000 RUB / asiakirja',
+    standardDoc: 'alk. 1000 RUB / asiakirja',
   },
   en: {
     writtenPerWord: 'from 5 RUB / word',
@@ -19,6 +21,7 @@ export const TRANSLATION_PRICES_I18N = {
     interpretingPerHour: 'from 2000 RUB / hour',
     simultaneousPerHour: 'from 3500 RUB / hour',
     notaryCertification: 'from 1000 RUB / document',
+    standardDoc: 'from 1000 RUB / document',
   },
 };
 
@@ -26,6 +29,6 @@ export const TRANSLATION_PRICES_I18N = {
 export const TRANSLATION_PRICES = TRANSLATION_PRICES_I18N.ru;
 
 export const TUTOR_PRICES = {
-  onlineLesson: '2500₽ / 60 мин',
-  pairLesson: '1400₽ / 60 мин с человека',
+  onlineLesson: '2000₽ / 60 мин',
+  pairLesson: '1200₽ / 60 мин с человека',
 };

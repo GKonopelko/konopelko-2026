@@ -8,6 +8,7 @@ import Button from '../../components/ui/Button.astro';
 import FaqPreview from '../../components/faq/FaqPreview.astro';
 import CTASection from '../../components/sections/CTASection.astro';
 import { TRANSLATION_PRICES } from '../../data/prices';
+import TranslatorExperience from '../../components/sections/TranslatorExperience.astro';
 
 const pageTitle = 'Переводчик финского языка в Санкт-Петербурге | Григорий Конопелько';
 const pageDescription =
@@ -81,6 +82,8 @@ const translationQuestions = [
     </p>
   </Section>
 
+  <TranslatorExperience />
+
   <Section>
     <FaqPreview
       title="Часто спрашивают о переводе"
@@ -91,8 +94,8 @@ const translationQuestions = [
 
   <CTASection
     badgeText="Санкт-Петербург и онлайн по всему миру"
-    title="Нужен точный перевод без посредников?"
-    subtitle="Для оценки стоимости и сроков письменного перевода вышлите файл, скан или фото по электронной почте grigori.konopelko@mail.ru, в Telegram или WhatsApp."
+    title="Нужен точный перевод в срок?"
+    subtitle="Для оценки стоимости и сроков письменного перевода вышлите файл, скан или фото"
     buttonText="Отправить документ на оценку"
     buttonHref="/translation/contact/"
   />
