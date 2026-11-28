@@ -32,6 +32,6 @@ export const TRANSLATION_PRICES_I18N = {
 export const TRANSLATION_PRICES = TRANSLATION_PRICES_I18N.ru;
 
 export const TUTOR_PRICES = {
-  onlineLesson: '2000₽ / 60 мин',
-  pairLesson: '1200₽ / 60 мин с человека',
+  onlineLesson: '2500₽ / 60 мин',
+  pairLesson: '1400₽ / 60 мин с человека',
 };

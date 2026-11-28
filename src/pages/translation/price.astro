@@ -6,8 +6,7 @@ import CTASection from '../../components/sections/CTASection.astro';
 import { TRANSLATION_PRICES } from '../../data/prices';
 
 const pageTitle = 'Стоимость перевода и связанных услуг | Григорий Конопелько';
-const pageDescription =
-  'Цены на устный и письменный перевод с финского и английского языков на русский и обратно. Нотариальное заверение и проставление апостиля.';
+const pageDescription = `Цены на устный и письменный перевод с финского и английского языков на русский и обратно. Стандартный документ ${TRANSLATION_PRICES.standardDoc}, устный перевод ${TRANSLATION_PRICES.interpretingPerHour}, перевод по телефону ${TRANSLATION_PRICES.phoneInterpreting}.`;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -28,11 +27,19 @@ const pageDescription =
           {TRANSLATION_PRICES.interpretingPerHour}
         </li>
         <li>
+          <strong>Устный перевод по телефону и громкой связи (включая звонки в Финляндию):</strong>
+          {TRANSLATION_PRICES.phoneInterpreting}
+        </li>
+        <li>
           <strong>Устный синхронный перевод:</strong>
           {TRANSLATION_PRICES.simultaneousPerHour}
         </li>
         <li>
-          <strong>Письменный перевод:</strong>
+          <strong>Письменный перевод (стандартный документ):</strong>
+          {TRANSLATION_PRICES.standardDoc}
+        </li>
+        <li>
+          <strong>Письменный перевод (нестандартный текст):</strong>
           {TRANSLATION_PRICES.writtenPerWord} ({TRANSLATION_PRICES.writtenPerPage})
         </li>
         <li>
@@ -49,29 +56,52 @@ const pageDescription =
       <h2>Перевод типовых документов (онлайн)</h2>
       <p>
         Для точного расчета стоимости и сроков вышлите файл, скан или фото документа по электронной
-        почте <strong>grigori.konopelko@mail.ru</strong> или в Telegram / WhatsApp.
+        почте <strong>grigori.konopelko@mail.ru</strong> или свяжитесь любым удобным способом на странице
+        <a href="/translation/contact/">контактов</a>.
       </p>
       <ul class="price-list">
         <li>
-          Онлайн-перевод свидетельства о рождении на финский язык — <strong>от 1000 руб.</strong>
+          Онлайн-перевод свидетельства о рождении на финский язык — <strong
+            >{TRANSLATION_PRICES.standardDoc}</strong
+          >
         </li>
         <li>
           Онлайн-перевод свидетельства о браке или разводе на финский язык — <strong
-            >от 1000 руб.</strong>
+            >{TRANSLATION_PRICES.standardDoc}</strong
+          >
         </li>
         <li>
-          Онлайн-перевод аттестата с приложением на финский язык — <strong>от 1000 руб.</strong>
+          Онлайн-перевод аттестата с приложением на финский язык — <strong
+            >{TRANSLATION_PRICES.standardDoc}</strong
+          >
         </li>
         <li>
-          Онлайн-перевод справки для военкомата с финского языка — <strong>от 1000 руб.</strong>
+          Онлайн-перевод справки для военкомата с финского языка — <strong
+            >{TRANSLATION_PRICES.standardDoc}</strong
+          >
         </li>
         <li>
           Онлайн-перевод диплома (+ приложение к диплому) на финский язык — <strong
-            >от 1000 руб. (+5 руб./слово)</strong>
+            >{TRANSLATION_PRICES.standardDoc} (+ {TRANSLATION_PRICES.writtenPerWord})</strong
+          >
         </li>
-        <li>Онлайн-перевод трудовой книжки на финский язык — <strong>от 1000 руб.</strong></li>
-        <li>Онлайн-перевод медицинской справки на финский язык — <strong>от 1000 руб.</strong></li>
+        <li>
+          Онлайн-перевод трудовой книжки на финский язык — <strong
+            >{TRANSLATION_PRICES.standardDoc}</strong>
+        </li>
+        <li>
+          Онлайн-перевод медицинской справки на финский язык — <strong
+            >{TRANSLATION_PRICES.standardDoc}</strong>
+        </li>
       </ul>
+    </Card>
+
+    <Card variant="wide-accent">
+      <h3>Порядок расчета и оплаты</h3>
+      <p>
+        Оценка стоимости по скану или фото документа проводится оперативно, обычно, в течение часа.
+        Оплата принимается в российских рублях (переводом через СБП или на карту российского банка).
+      </p>
     </Card>
   </Section>
 
